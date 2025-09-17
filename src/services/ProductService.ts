@@ -93,6 +93,16 @@ class ProductService extends BaseService<{ products: Product[] }> {
   }
 
   /**
+   * Obtiene todos los productos con paginación
+   * @param pagination - Opciones de paginación
+   * @returns Conexión con los productos
+   */
+  public getAllProducts(pagination: PaginationOptions = { first: 10 }): Connection<Product> {
+    const products = this.data?.products || [];
+    return this.createConnection<Product>(products, pagination);
+  }
+
+  /**
    * Calcula un puntaje para un producto basado en su reputación
    * @private
    */

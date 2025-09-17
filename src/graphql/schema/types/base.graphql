@@ -61,6 +61,9 @@ type Query {
   """Obtiene productos frecuentemente comprados juntos"""
   frequentlyBoughtTogether(productId: ID!, first: Int = 5, after: String): ProductConnection!
   
+  """Obtiene el listado de todos los productos"""
+  products(first: Int = 10, after: String): ProductConnection!
+  
   """Obtiene las preguntas de un producto"""
   productQuestions(productId: ID!, first: Int = 10, after: String): QuestionConnection!
   
@@ -81,4 +84,3 @@ type Author {
   """Nombre del autor"""
   name: String!
 }
-

@@ -64,6 +64,11 @@ export type ProductResolvers = IResolvers & {
       args: { productId: ID },
       context: Context,
     ) => Promise<RatingSummary>;
+    products: (
+      _: unknown,
+      args: PaginationArgs,
+      context: Context,
+    ) => Promise<{ edges: Array<{ node: Product; cursor: string }>; pageInfo: PageInfo }>;
   };
   Product: {
     questions: (
