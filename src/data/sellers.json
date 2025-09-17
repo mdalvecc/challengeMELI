@@ -1,0 +1,34 @@
+{
+  "sellers": [
+    {
+      "id": "SELLER123",
+      "name": "TecnoShop",
+      "category": "MERCADOLIDER_GOLD",
+      "sales": 12457,
+      "followers": 8500,
+      "products": 245,
+      "reputation": 85,
+      "url": "https://mercadolibre.com.ar/seller/SELLER123"
+    },
+    {
+      "id": "SELLER456",
+      "name": "CompuMundo",
+      "category": "MERCADOLIDER_PLATINUM",
+      "sales": 8765,
+      "followers": 15200,
+      "products": 1850,
+      "reputation": 92,
+      "url": "https://mercadolibre.com.ar/seller/SELLER456"
+    },
+    {
+      "id": "SELLER789",
+      "name": "ElectroHogar",
+      "category": "MERCADOLIDER",
+      "sales": 5432,
+      "followers": 3200,
+      "products": 890,
+      "reputation": 78,
+      "url": "https://mercadolibre.com.ar/seller/SELLER789"
+    }
+  ]
+}

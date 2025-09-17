@@ -1,0 +1,273 @@
+"""
+Información de precios de un producto
+"""
+type PriceInfo {
+  """Precio actual"""
+  price: Float!
+  
+  """Precio original (si hay descuento)"""
+  originalPrice: Float
+  
+  """Porcentaje de descuento (si aplica)"""
+  discountPercentage: Int
+
+  """Moneda del precio (por ejemplo ARS, USD)"""
+  currency: String!
+  
+  """Opciones de cuotas"""
+  installments: InstallmentInfo
+}
+
+"""
+Información de cuotas de pago
+"""
+type InstallmentInfo {
+  """Cantidad de cuotas"""
+  quantity: Int!
+  
+  """Valor de cada cuota"""
+  amount: Float!
+  
+  """Tasa de interés (si aplica)"""
+  rate: Float
+  
+  """Valor total financiado"""
+  total: Float!
+}
+
+"""
+Condición del producto
+"""
+enum ProductCondition {
+  """Nuevo"""
+  NEW
+  
+  """Usado"""
+  USED
+  
+  """Reacondicionado"""
+  REFURBISHED
+}
+
+"""
+Categoría de un producto
+"""
+type Category {
+  """ID de la categoría"""
+  id: ID!
+  
+  """Nombre de la categoría"""
+  name: String!
+  
+  """Ruta de la categoría"""
+  path: [CategoryPath!]!
+}
+
+"""
+Elemento de la ruta de categoría
+"""
+type CategoryPath {
+  """ID de la categoría"""
+  id: ID!
+  
+  """Nombre de la categoría"""
+  name: String!
+}
+
+"""
+Característica de un producto
+"""
+type Feature {
+  """Nombre de la característica"""
+  name: String!
+  
+  """Valor de la característica"""
+  value: String!
+}
+
+"""
+Tipos de logística disponibles para los envíos
+"""
+enum LogisticType {
+  """Envío con entrega en punto de conveniencia"""
+  XD_DROP_OFF
+  
+  """Envío directo del vendedor al comprador"""
+  CROSS_DOCKING
+  
+  """Envío gestionado por Mercado Envíos Full"""
+  FULFILLMENT
+  
+  """Envío con retiro en sucursal"""
+  DROP_OFF
+  
+  """Envío con Mercado Envíos"""
+  ME2
+}
+
+"""
+Información de envío
+"""
+type ShippingInfo {
+  """Indica si el envío es gratuito"""
+  freeShipping: Boolean!
+  
+  """Fecha estimada de entrega"""
+  estimatedDelivery: String
+  
+  """Indica si está disponible para retiro"""
+  pickupAvailable: Boolean
+  
+  """Ubicación de retiro"""
+  pickupLocation: String
+  
+  """Tipo de logística"""
+  logisticType: LogisticType
+}
+
+"""
+Método de pago
+"""
+type PaymentMethod {
+  """ID del método de pago"""
+  id: ID!
+  
+  """Nombre del método de pago"""
+  name: String!
+  
+  """Opciones de cuotas"""
+  installments: [Installment!]!
+}
+
+"""
+Opción de cuota
+"""
+type Installment {
+  """Cantidad de cuotas"""
+  quantity: Int!
+  
+  """Valor de cada cuota"""
+  amount: Float!
+  
+  """Tasa de interés (si aplica)"""
+  rate: Float
+  
+  """Valor total"""
+  total: Float!
+}
+
+"""
+Producto
+"""
+type Product implements Node {
+  """ID del producto"""
+  id: ID!
+  
+  """Título del producto"""
+  title: String!
+  
+  """Descripción detallada"""
+  description: String
+  
+  """Condición del producto"""
+  condition: ProductCondition!
+  
+  """Categoría principal"""
+  category: Category!
+  
+  """Características del producto"""
+  features: [Feature!]!
+  
+  """URLs de las imágenes del producto"""
+  images: [String!]!
+  
+  """Información del vendedor"""
+  seller: Seller!
+  
+  """Información de envío"""
+  shipping: ShippingInfo!
+  
+  """Información de precios"""
+  priceInfo: PriceInfo!
+  
+  """Métodos de pago aceptados"""
+  paymentMethods: [PaymentMethod!]!
+  
+  """Cantidad de productos vendidos"""
+  soldQuantity: Int!
+  
+  """Cantidad de productos disponibles"""
+  availableQuantity: Int!
+  
+  """Resumen de calificaciones del producto"""
+  ratingSummary: RatingSummary
+  
+  """Preguntas sobre el producto"""
+  questions(
+    """Número máximo de preguntas a devolver"""
+    first: Int = 10
+    
+    """Cursor para la paginación"""
+    after: String
+    
+    """Mostrar solo preguntas con respuesta"""
+    onlyAnswered: Boolean = true
+  ): QuestionConnection
+  
+  """Reseñas del producto"""
+  reviews(
+    """Número máximo de reseñas a devolver"""
+    first: Int = 10
+    
+    """Cursor para la paginación"""
+    after: String
+  ): ReviewConnection
+}
+
+"""
+Vista previa de un producto (para listados)
+"""
+type ProductPreview implements Node {
+  """ID del producto"""
+  id: ID!
+  
+  """Título del producto"""
+  title: String!
+  
+  """Información de precios"""
+  priceInfo: PriceInfo!
+  
+  """URL de la imagen principal"""
+  image: String!
+  
+  """Indica si tiene envío gratis"""
+  freeShipping: Boolean!
+  
+  """Condición del producto"""
+  condition: ProductCondition!
+}
+
+"""
+Conexión de productos para paginación
+"""
+type ProductConnection {
+  """Número total de productos"""
+  totalCount: Int!
+  
+  """Información de paginación"""
+  pageInfo: PageInfo!
+  
+  """Lista de productos"""
+  edges: [ProductEdge!]!
+}
+
+"""
+Arista de producto para la conexión
+"""
+type ProductEdge {
+  """El ítem real"""
+  node: ProductPreview!
+  
+  """Cursor para este ítem"""
+  cursor: String!
+}

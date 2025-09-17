@@ -1,0 +1,96 @@
+"""
+Resumen de calificaciones de un producto
+"""
+type RatingSummary {
+  """Puntuación promedio (1-5)"""
+  averageRating: Float!
+  
+  """Número total de calificaciones"""
+  totalRatings: Int!
+  
+  """Distribución de calificaciones por estrella"""
+  ratings: RatingsBreakdown!
+}
+
+"""
+Desglose de calificaciones por estrella
+"""
+type RatingsBreakdown {
+  """Cantidad de calificaciones de 1 estrella"""
+  oneStar: Int!
+  
+  """Cantidad de calificaciones de 2 estrellas"""
+  twoStars: Int!
+  
+  """Cantidad de calificaciones de 3 estrellas"""
+  threeStars: Int!
+  
+  """Cantidad de calificaciones de 4 estrellas"""
+  fourStars: Int!
+  
+  """Cantidad de calificaciones de 5 estrellas"""
+  fiveStars: Int!
+}
+
+"""
+Opinión de un producto
+"""
+type Review implements Node {
+  """ID de la opinión"""
+  id: ID!
+  
+  """El producto al que pertenece la reseña"""
+  product: Product!
+  
+  """Autor de la reseña"""
+  author: Author!
+  
+  """Calificación (1-5)"""
+  rating: Int!
+  
+  """Título de la opinión"""
+  title: String
+  
+  """Contenido de la opinión"""
+  content: String
+  
+  """Fecha de creación"""
+  date: Date!
+  
+  """Indica si es una compra verificada"""
+  verifiedPurchase: Boolean!
+  
+  """Número de 'me gusta'"""
+  likes: Int!
+  
+  """Número de 'no me gusta'"""
+  dislikes: Int!
+}
+
+"""
+Conexión de opiniones para paginación
+"""
+type ReviewConnection {
+  """Número total de opiniones"""
+  totalCount: Int!
+  
+  """Información de paginación"""
+  pageInfo: PageInfo!
+  
+  """Lista de opiniones"""
+  edges: [ReviewEdge!]!
+  
+  """Resumen de calificaciones"""
+  summary: RatingSummary!
+}
+
+"""
+Arista de opinión para la conexión
+"""
+type ReviewEdge {
+  """El ítem real"""
+  node: Review!
+  
+  """Cursor para este ítem"""
+  cursor: String!
+}

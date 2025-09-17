@@ -1,0 +1,84 @@
+"""
+Interfaz base que deben implementar todos los tipos que se pueden paginar
+"""
+interface Node {
+  """Identificador único del nodo"""
+  id: ID!
+}
+
+"""
+Información de paginación para conexiones
+"""
+type PageInfo {
+  """Indica si hay más páginas después de la actual"""
+  hasNextPage: Boolean!
+  
+  """Indica si hay páginas antes de la actual"""
+  hasPreviousPage: Boolean!
+  
+  """Cursor del primer ítem en la página actual"""
+  startCursor: String
+  
+  """Cursor del último ítem en la página actual"""
+  endCursor: String
+}
+
+"""
+Contenedor para un ítem en una conexión paginada
+"""
+type Edge {
+  """El ítem real"""
+  node: Node!
+  
+  """Cursor para este ítem"""
+  cursor: String!
+}
+
+"""
+Estructura estándar para respuestas paginadas
+"""
+type Connection {
+  """Número total de ítems disponibles"""
+  totalCount: Int!
+  
+  """Información de paginación"""
+  pageInfo: PageInfo!
+  
+  """Lista de ítems"""
+  edges: [Edge!]!
+}
+
+type Query {
+  """Obtiene un producto por su ID"""
+  product(id: ID!): Product
+  
+  """Obtiene productos del mismo vendedor"""
+  sameSellerProducts(productId: ID!, first: Int = 10, after: String): ProductConnection!
+  
+  """Obtiene productos relacionados"""
+  relatedProducts(productId: ID!, first: Int = 10, after: String): ProductConnection!
+  
+  """Obtiene productos frecuentemente comprados juntos"""
+  frequentlyBoughtTogether(productId: ID!, first: Int = 5, after: String): ProductConnection!
+  
+  """Obtiene las preguntas de un producto"""
+  productQuestions(productId: ID!, first: Int = 10, after: String): QuestionConnection!
+  
+  """Obtiene las opiniones de un producto"""
+  productReviews(productId: ID!, first: Int = 10, after: String): ReviewConnection!
+  
+  """Obtiene el resumen de calificaciones de un producto"""
+  productRatingSummary(productId: ID!): RatingSummary!
+}
+
+"""
+Autor de una opinión o pregunta
+"""
+type Author {
+  """ID del autor"""
+  id: ID!
+  
+  """Nombre del autor"""
+  name: String!
+}
+

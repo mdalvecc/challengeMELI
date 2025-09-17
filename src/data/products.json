@@ -1,0 +1,392 @@
+{
+  "products": [
+    {
+      "id": "MLB12345678",
+      "title": "Smartphone XYZ Pro 128GB",
+      "description": "Último modelo con cámara de 108MP y pantalla AMOLED de 6.7\"",
+      "condition": "NEW",
+      "category": {
+        "id": "MLB1234",
+        "name": "Celulares y Smartphones",
+        "path": [
+          {
+            "id": "MLB1000",
+            "name": "Tecnología"
+          },
+          {
+            "id": "MLB1234",
+            "name": "Celulares y Smartphones"
+          }
+        ]
+      },
+      "features": [
+        {
+          "name": "Marca",
+          "value": "XYZ"
+        },
+        {
+          "name": "Modelo",
+          "value": "Pro 128GB"
+        },
+        {
+          "name": "Memoria RAM",
+          "value": "8GB"
+        },
+        {
+          "name": "Almacenamiento",
+          "value": "128GB"
+        },
+        {
+          "name": "Sistema Operativo",
+          "value": "Android 13"
+        }
+      ],
+      "images": [
+        "https://http2.mlstatic.com/D_NQ_NP_123456_MLA12345678_1.jpg",
+        "https://http2.mlstatic.com/D_NQ_NP_123456_MLA12345678_2.jpg",
+        "https://http2.mlstatic.com/D_NQ_NP_123456_MLA12345678_3.jpg"
+      ],
+      "priceInfo": {
+        "price": 249999,
+        "originalPrice": 299999,
+        "discountPercentage": 17,
+        "currency": "ARS",
+        "installments": {
+          "quantity": 12,
+          "amount": 20833.25,
+          "total": 249999
+        }
+      },
+      "paymentMethods": [
+        {
+          "id": "visa",
+          "name": "Visa",
+          "installments": [
+            {
+              "quantity": 1,
+              "amount": 249999,
+              "total": 249999
+            },
+            {
+              "quantity": 3,
+              "amount": 83333,
+              "total": 249999
+            },
+            {
+              "quantity": 6,
+              "amount": 41666.5,
+              "total": 249999
+            },
+            {
+              "quantity": 12,
+              "amount": 20833.25,
+              "total": 249999
+            }
+          ]
+        },
+        {
+          "id": "mastercard",
+          "name": "Mastercard",
+          "installments": [
+            {
+              "quantity": 1,
+              "amount": 249999,
+              "total": 249999
+            },
+            {
+              "quantity": 3,
+              "amount": 83333,
+              "total": 249999
+            },
+            {
+              "quantity": 6,
+              "amount": 41666.5,
+              "total": 249999
+            },
+            {
+              "quantity": 12,
+              "amount": 20833.25,
+              "total": 249999
+            }
+          ]
+        }
+      ],
+      "seller": {
+        "id": "SELLER123",
+        "name": "TecnoShop",
+        "category": "MERCADOLIDER_GOLD",
+        "sales": 12457,
+        "followers": 8500,
+        "products": 245,
+        "reputation": 85,
+        "url": "https://mercadolibre.com.ar/seller/SELLER123"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "pickupAvailable": true,
+        "logisticType": "FULFILLMENT"
+      },
+      "soldQuantity": 128,
+      "availableQuantity": 45
+    },
+    {
+      "id": "MLB23456789",
+      "title": "Notebook Gamer Nitro 5",
+      "description": "Procesador i7, 16GB RAM, RTX 3060, 512GB SSD",
+      "condition": "NEW",
+      "category": {
+        "id": "MLB1652",
+        "name": "Computación",
+        "path": [
+          {
+            "id": "MLB1000",
+            "name": "Tecnología"
+          },
+          {
+            "id": "MLB1652",
+            "name": "Computación"
+          }
+        ]
+      },
+      "features": [
+        {
+          "name": "Marca",
+          "value": "Acer"
+        },
+        {
+          "name": "Procesador",
+          "value": "Intel i7-11800H"
+        },
+        {
+          "name": "Memoria RAM",
+          "value": "16GB"
+        },
+        {
+          "name": "Almacenamiento",
+          "value": "512GB SSD"
+        },
+        {
+          "name": "Tarjeta Gráfica",
+          "value": "NVIDIA RTX 3060"
+        }
+      ],
+      "images": [
+        "https://http2.mlstatic.com/D_NQ_NP_234567_MLA23456789_1.jpg",
+        "https://http2.mlstatic.com/D_NQ_NP_234567_MLA23456789_2.jpg",
+        "https://http2.mlstatic.com/D_NQ_NP_234567_MLA23456789_3.jpg",
+        "https://http2.mlstatic.com/D_NQ_NP_234567_MLA23456789_4.jpg"
+      ],
+      "priceInfo": {
+        "price": 899999,
+        "originalPrice": 999999,
+        "discountPercentage": 10,
+        "currency": "ARS",
+        "installments": {
+          "quantity": 12,
+          "amount": 74999.92,
+          "total": 899999
+        }
+      },
+      "paymentMethods": [
+        {
+          "id": "visa",
+          "name": "Visa",
+          "installments": [
+            {
+              "quantity": 1,
+              "amount": 899999,
+              "total": 899999
+            },
+            {
+              "quantity": 3,
+              "amount": 299999.67,
+              "total": 899999
+            },
+            {
+              "quantity": 6,
+              "amount": 149999.83,
+              "total": 899999
+            },
+            {
+              "quantity": 12,
+              "amount": 74999.92,
+              "total": 899999
+            }
+          ]
+        },
+        {
+          "id": "mastercard",
+          "name": "Mastercard",
+          "installments": [
+            {
+              "quantity": 1,
+              "amount": 899999,
+              "total": 899999
+            },
+            {
+              "quantity": 3,
+              "amount": 299999.67,
+              "total": 899999
+            },
+            {
+              "quantity": 6,
+              "amount": 149999.83,
+              "total": 899999
+            },
+            {
+              "quantity": 12,
+              "amount": 74999.92,
+              "total": 899999
+            }
+          ]
+        }
+      ],
+      "seller": {
+        "id": "SELLER456",
+        "name": "CompuMundo",
+        "category": "MERCADOLIDER_PLATINUM",
+        "sales": 8765,
+        "followers": 15200,
+        "products": 1850,
+        "reputation": 92,
+        "url": "https://mercadolibre.com.ar/seller/SELLER456"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "pickupAvailable": true,
+        "logisticType": "FULFILLMENT"
+      },
+      "soldQuantity": 87,
+      "availableQuantity": 12
+    },
+    {
+      "id": "MLB34567890",
+      "title": "Smart TV 55\" 4K UHD",
+      "description": "Smart TV con HDR y Android TV incorporado",
+      "condition": "NEW",
+      "category": {
+        "id": "MLB1002",
+        "name": "TV y Audio",
+        "path": [
+          {
+            "id": "MLB1000",
+            "name": "Tecnología"
+          },
+          {
+            "id": "MLB1002",
+            "name": "TV y Audio"
+          }
+        ]
+      },
+      "features": [
+        {
+          "name": "Marca",
+          "value": "Samsung"
+        },
+        {
+          "name": "Tamaño",
+          "value": "55 pulgadas"
+        },
+        {
+          "name": "Resolución",
+          "value": "4K UHD"
+        },
+        {
+          "name": "Sistema Operativo",
+          "value": "Tizen"
+        },
+        {
+          "name": "Conexiones",
+          "value": "3xHDMI, 2xUSB"
+        }
+      ],
+      "images": [
+        "https://http2.mlstatic.com/D_NQ_NP_345678_MLA34567890_1.jpg",
+        "https://http2.mlstatic.com/D_NQ_NP_345678_MLA34567890_2.jpg",
+        "https://http2.mlstatic.com/D_NQ_NP_345678_MLA34567890_3.jpg"
+      ],
+      "priceInfo": {
+        "price": 449999,
+        "originalPrice": 499999,
+        "discountPercentage": 10,
+        "currency": "ARS",
+        "installments": {
+          "quantity": 12,
+          "amount": 37499.92,
+          "total": 449999
+        }
+      },
+      "paymentMethods": [
+        {
+          "id": "visa",
+          "name": "Visa",
+          "installments": [
+            {
+              "quantity": 1,
+              "amount": 449999,
+              "total": 449999
+            },
+            {
+              "quantity": 3,
+              "amount": 149999.67,
+              "total": 449999
+            },
+            {
+              "quantity": 6,
+              "amount": 74999.83,
+              "total": 449999
+            },
+            {
+              "quantity": 12,
+              "amount": 37499.92,
+              "total": 449999
+            }
+          ]
+        },
+        {
+          "id": "mastercard",
+          "name": "Mastercard",
+          "installments": [
+            {
+              "quantity": 1,
+              "amount": 449999,
+              "total": 449999
+            },
+            {
+              "quantity": 3,
+              "amount": 149999.67,
+              "total": 449999
+            },
+            {
+              "quantity": 6,
+              "amount": 74999.83,
+              "total": 449999
+            },
+            {
+              "quantity": 12,
+              "amount": 37499.92,
+              "total": 449999
+            }
+          ]
+        }
+      ],
+      "seller": {
+        "id": "SELLER789",
+        "name": "ElectroHogar",
+        "category": "MERCADOLIDER",
+        "sales": 5432,
+        "followers": 3200,
+        "products": 890,
+        "reputation": 78,
+        "url": "https://mercadolibre.com.ar/seller/SELLER789"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "pickupAvailable": true,
+        "logisticType": "FULFILLMENT"
+      },
+      "soldQuantity": 156,
+      "availableQuantity": 23
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+"""
+Pregunta sobre un producto
+"""
+type Question implements Node {
+  """ID de la pregunta"""
+  id: ID!
+  
+  """El producto al que pertenece la pregunta"""
+  product: Product!
+  
+  """Texto de la pregunta"""
+  question: String!
+  
+  """Respuesta a la pregunta (si existe)"""
+  answer: Answer
+  
+  """Fecha de la pregunta"""
+  date: Date!
+  
+  """Autor de la pregunta"""
+  author: Author!
+  
+  """Estado de la pregunta"""
+  status: QuestionStatus!
+  
+  """Número de 'me gusta'"""
+  likes: Int!
+  
+  """Número de 'no me gusta'"""
+  dislikes: Int!
+}
+
+"""
+Estado de una pregunta
+"""
+enum QuestionStatus {
+  """Sin responder"""
+  UNANSWERED
+  
+  """Respondida"""
+  ANSWERED
+  
+  """Eliminada"""
+  DELETED
+}
+
+"""
+Respuesta a una pregunta
+"""
+type Answer {
+  """ID de la respuesta"""
+  id: ID!
+  
+  """Contenido de la respuesta"""
+  content: String!
+  
+  """Fecha de la respuesta"""
+  date: Date!
+  
+  """Autor de la respuesta"""
+  author: Author!
+  
+  """Número de 'me gusta'"""
+  likes: Int!
+  
+  """Número de 'no me gusta'"""
+  dislikes: Int!
+}
+
+"""
+Conexión de preguntas para paginación
+"""
+type QuestionConnection {
+  """Número total de preguntas"""
+  totalCount: Int!
+  
+  """Información de paginación"""
+  pageInfo: PageInfo!
+  
+  """Lista de preguntas"""
+  edges: [QuestionEdge!]!
+}
+
+"""
+Arista de pregunta para la conexión
+"""
+type QuestionEdge {
+  """El ítem real"""
+  node: Question!
+  
+  """Cursor para este ítem"""
+  cursor: String!
+}

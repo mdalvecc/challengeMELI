@@ -1,0 +1,148 @@
+{
+  "reviews": [
+    {
+      "id": "REV12345678",
+      "product": {
+        "id": "MLB12345678",
+        "title": "Smartphone XYZ Pro 128GB",
+        "category": {
+          "id": "MLB1234",
+          "name": "Celulares y Smartphones",
+          "path": [
+            { "id": "MLB1000", "name": "Tecnología" },
+            { "id": "MLB1234", "name": "Celulares y Smartphones" }
+          ]
+        },
+        "seller": {
+          "id": "SELLER123",
+          "name": "TecnoShop",
+          "category": "MERCADOLIDER_GOLD",
+          "sales": 12457,
+          "followers": 8500,
+          "products": 245,
+          "reputation": 85,
+          "url": "https://mercadolibre.com.ar/seller/SELLER123"
+        }
+      },
+      "rating": 5,
+      "title": "Excelente producto",
+      "content": "El teléfono superó mis expectativas. La cámara es increíble y la batería dura todo el día.",
+      "date": "2023-09-15T18:30:00.000-03:00",
+      "author": {
+        "id": "USER001",
+        "name": "JuanPerez"
+      },
+      "verifiedPurchase": true,
+      "likes": 10,
+      "dislikes": 1
+    },
+    {
+      "id": "REV12345679",
+      "product": {
+        "id": "MLB12345678",
+        "title": "Smartphone XYZ Pro 128GB",
+        "category": {
+          "id": "MLB1234",
+          "name": "Celulares y Smartphones",
+          "path": [
+            { "id": "MLB1000", "name": "Tecnología" },
+            { "id": "MLB1234", "name": "Celulares y Smartphones" }
+          ]
+        },
+        "seller": {
+          "id": "SELLER123",
+          "name": "TecnoShop",
+          "category": "MERCADOLIDER_GOLD",
+          "sales": 12457,
+          "followers": 8500,
+          "products": 245,
+          "reputation": 85,
+          "url": "https://mercadolibre.com.ar/seller/SELLER123"
+        }
+      },
+      "rating": 4,
+      "title": "Muy bueno, pero...",
+      "content": "El teléfono es excelente, pero el cargador se calienta demasiado.",
+      "date": "2023-09-20T10:15:00.000-03:00",
+      "author": {
+        "id": "USER002",
+        "name": "MariaGarcia"
+      },
+      "verifiedPurchase": true,
+      "likes": 5,
+      "dislikes": 0
+    },
+    {
+      "id": "REV23456789",
+      "product": {
+        "id": "MLB23456789",
+        "title": "Notebook Gamer Nitro 5",
+        "category": {
+          "id": "MLB1652",
+          "name": "Computación",
+          "path": [
+            { "id": "MLB1000", "name": "Tecnología" },
+            { "id": "MLB1652", "name": "Computación" }
+          ]
+        },
+        "seller": {
+          "id": "SELLER456",
+          "name": "CompuMundo",
+          "category": "MERCADOLIDER_PLATINUM",
+          "sales": 8765,
+          "followers": 15200,
+          "products": 1850,
+          "reputation": 92,
+          "url": "https://mercadolibre.com.ar/seller/SELLER456"
+        }
+      },
+      "rating": 5,
+      "title": "Increíble rendimiento",
+      "content": "Esta notebook corre todos los juegos en ultra sin problemas. La pantalla es espectacular y el teclado muy cómodo.",
+      "date": "2023-09-18T14:20:00.000-03:00",
+      "author": {
+        "id": "USER003",
+        "name": "GamerPro"
+      },
+      "verifiedPurchase": true,
+      "likes": 24,
+      "dislikes": 2
+    },
+    {
+      "id": "REV34567890",
+      "product": {
+        "id": "MLB34567890",
+        "title": "Smart TV 55\" 4K UHD",
+        "category": {
+          "id": "MLB1002",
+          "name": "TV y Audio",
+          "path": [
+            { "id": "MLB1000", "name": "Tecnología" },
+            { "id": "MLB1002", "name": "TV y Audio" }
+          ]
+        },
+        "seller": {
+          "id": "SELLER789",
+          "name": "ElectroHogar",
+          "category": "MERCADOLIDER",
+          "sales": 5432,
+          "followers": 3200,
+          "products": 890,
+          "reputation": 78,
+          "url": "https://mercadolibre.com.ar/seller/SELLER789"
+        }
+      },
+      "rating": 5,
+      "title": "La mejor TV que he tenido",
+      "content": "La calidad de imagen es impresionante, los colores son muy vivos y el sistema operativo es muy fluido. La recomiendo 100%.",
+      "date": "2023-09-22T16:45:00.000-03:00",
+      "author": {
+        "id": "USER004",
+        "name": "ArielTecno"
+      },
+      "verifiedPurchase": true,
+      "likes": 15,
+      "dislikes": 0
+    }
+  ]
+}

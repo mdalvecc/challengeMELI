@@ -1,0 +1,10 @@
+# Importar tipos
+# Fecha
+scalar Date
+
+# Los tipos base deben ir primero
+# Luego los tipos que dependen de ellos
+type Query {
+  # Este tipo se define en base.graphql pero necesitamos al menos un campo en el esquema raíz
+  _empty: String
+}

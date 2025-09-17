@@ -1,0 +1,139 @@
+{
+  "questions": [
+    {
+      "id": "Q12345678",
+      "product": {
+        "id": "MLB12345678",
+        "title": "Smartphone XYZ Pro 128GB",
+        "category": {
+          "id": "MLB1234",
+          "name": "Celulares y Smartphones",
+          "path": [
+            { "id": "MLB1000", "name": "Tecnología" },
+            { "id": "MLB1234", "name": "Celulares y Smartphones" }
+          ]
+        },
+        "seller": {
+          "id": "SELLER123",
+          "name": "TecnoShop",
+          "category": "MERCADOLIDER_GOLD",
+          "sales": 12457,
+          "followers": 8500,
+          "products": 245,
+          "reputation": 85,
+          "url": "https://mercadolibre.com.ar/seller/SELLER123"
+        }
+      },
+      "question": "¿Trae cargador incluido?",
+      "answer": {
+        "id": "A12345678",
+        "content": "Sí, incluye cargador rápido de 30W",
+        "date": "2023-10-10T11:30:00.000-03:00",
+        "author": {
+          "id": "SELLER123",
+          "name": "Vendedor"
+        },
+        "likes": 2,
+        "dislikes": 0
+      },
+      "date": "2023-10-10T10:15:00.000-03:00",
+      "author": {
+        "id": "USER001",
+        "name": "Comprador123"
+      },
+      "status": "ANSWERED",
+      "likes": 5,
+      "dislikes": 0
+    },
+    {
+      "id": "Q12345679",
+      "product": {
+        "id": "MLB12345678",
+        "title": "Smartphone XYZ Pro 128GB",
+        "category": {
+          "id": "MLB1234",
+          "name": "Celulares y Smartphones",
+          "path": [
+            { "id": "MLB1000", "name": "Tecnología" },
+            { "id": "MLB1234", "name": "Celulares y Smartphones" }
+          ]
+        },
+        "seller": {
+          "id": "SELLER123",
+          "name": "TecnoShop",
+          "category": "MERCADOLIDER_GOLD",
+          "sales": 12457,
+          "followers": 8500,
+          "products": 245,
+          "reputation": 85,
+          "url": "https://mercadolibre.com.ar/seller/SELLER123"
+        }
+      },
+      "question": "¿Es resistente al agua?",
+      "answer": {
+        "id": "A12345679",
+        "content": "Sí, tiene certificación IP68",
+        "date": "2023-10-12T15:45:00.000-03:00",
+        "author": {
+          "id": "SELLER123",
+          "name": "Vendedor"
+        },
+        "likes": 1,
+        "dislikes": 0
+      },
+      "date": "2023-10-12T14:20:00.000-03:00",
+      "author": {
+        "id": "USER002",
+        "name": "Usuario456"
+      },
+      "status": "ANSWERED",
+      "likes": 3,
+      "dislikes": 0
+    },
+    {
+      "id": "Q23456789",
+      "product": {
+        "id": "MLB23456789",
+        "title": "Notebook Gamer Nitro 5",
+        "category": {
+          "id": "MLB1652",
+          "name": "Computación",
+          "path": [
+            { "id": "MLB1000", "name": "Tecnología" },
+            { "id": "MLB1652", "name": "Computación" }
+          ]
+        },
+        "seller": {
+          "id": "SELLER456",
+          "name": "CompuMundo",
+          "category": "MERCADOLIDER_PLATINUM",
+          "sales": 8765,
+          "followers": 15200,
+          "products": 1850,
+          "reputation": 92,
+          "url": "https://mercadolibre.com.ar/seller/SELLER456"
+        }
+      },
+      "question": "¿Se le puede agregar más memoria RAM?",
+      "answer": {
+        "id": "A23456789",
+        "content": "Sí, tiene una ranura adicional para expandir hasta 32GB más de RAM.",
+        "date": "2023-10-15T10:45:00.000-03:00",
+        "author": {
+          "id": "SUPPORT001",
+          "name": "SoporteTecnico"
+        },
+        "likes": 5,
+        "dislikes": 0
+      },
+      "date": "2023-10-15T09:30:00.000-03:00",
+      "author": {
+        "id": "USER003",
+        "name": "TecnoUser"
+      },
+      "status": "ANSWERED",
+      "likes": 8,
+      "dislikes": 1
+    }
+  ]
+}

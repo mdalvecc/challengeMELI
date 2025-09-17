@@ -1,0 +1,38 @@
+"""
+Categoría del vendedor
+"""
+enum SellerCategory {
+  STANDARD
+  MERCADOLIDER
+  MERCADOLIDER_GOLD
+  MERCADOLIDER_PLATINUM
+}
+
+"""
+Vendedor
+"""
+type Seller implements Node {
+  """ID del vendedor"""
+  id: ID!
+  
+  """Nombre del vendedor"""
+  name: String!
+  
+  """Categoría del vendedor"""
+  category: SellerCategory
+  
+  """Cantidad de ventas"""
+  sales: Int!
+  
+  """Cantidad de seguidores"""
+  followers: Int!
+  
+  """Cantidad de productos"""
+  products: Int!
+  
+  """Reputación en porcentaje (0-100)"""
+  reputation: Int!
+  
+  """URL del perfil"""
+  url: String!
+}
