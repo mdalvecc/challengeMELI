@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "Husky pre-commit: ejecutando format y lint..."
+
+# Formatea el código fuente
+npm run format || { echo "pre-commit: prettier falló"; exit 1; }
+
+# Linter (no corregimos automáticamente en CI/commit para detectar problemas)
+npm run lint || { echo "pre-commit: eslint falló"; exit 1; }
+
+echo "pre-commit: OK"
