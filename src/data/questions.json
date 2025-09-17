@@ -9,8 +9,14 @@
           "id": "MLB1234",
           "name": "Celulares y Smartphones",
           "path": [
-            { "id": "MLB1000", "name": "Tecnología" },
-            { "id": "MLB1234", "name": "Celulares y Smartphones" }
+            {
+              "id": "MLB1000",
+              "name": "Tecnología"
+            },
+            {
+              "id": "MLB1234",
+              "name": "Celulares y Smartphones"
+            }
           ]
         },
         "seller": {
@@ -54,8 +60,14 @@
           "id": "MLB1234",
           "name": "Celulares y Smartphones",
           "path": [
-            { "id": "MLB1000", "name": "Tecnología" },
-            { "id": "MLB1234", "name": "Celulares y Smartphones" }
+            {
+              "id": "MLB1000",
+              "name": "Tecnología"
+            },
+            {
+              "id": "MLB1234",
+              "name": "Celulares y Smartphones"
+            }
           ]
         },
         "seller": {
@@ -99,8 +111,14 @@
           "id": "MLB1652",
           "name": "Computación",
           "path": [
-            { "id": "MLB1000", "name": "Tecnología" },
-            { "id": "MLB1652", "name": "Computación" }
+            {
+              "id": "MLB1000",
+              "name": "Tecnología"
+            },
+            {
+              "id": "MLB1652",
+              "name": "Computación"
+            }
           ]
         },
         "seller": {
