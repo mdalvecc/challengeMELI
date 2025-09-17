@@ -8,7 +8,7 @@ import { ApolloServer } from 'apollo-server';
 
 import formatGraphQLError from './graphql/errors/formatError.js';
 
-import resolvers from './graphql/resolvers/product.js';
+import resolvers from './graphql/resolvers/index.js';
 
 // Configuración de __dirname para ES modules
 const __filename = fileURLToPath(import.meta.url);
