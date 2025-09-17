@@ -33,7 +33,6 @@ export default abstract class BaseService<BaseData> {
   public async initialize(): Promise<void> {
     try {
       await this.loadData();
-      console.log(`Datos de ${this.dataFile} cargados correctamente`);
     } catch (error) {
       console.error(`Error al cargar ${this.dataFile}:`, error);
       throw error;
@@ -101,9 +100,43 @@ export default abstract class BaseService<BaseData> {
    * Carga los datos desde el archivo JSON
    */
   private async loadData(): Promise<void> {
-    const filePath = path.join(this.dataDir, this.dataFile);
-    const data = await fs.readFile(filePath, 'utf-8');
-    this.data = JSON.parse(data);
+    try {
+      const filePath = path.join(this.dataDir, this.dataFile);
+      const data = await fs.readFile(filePath, 'utf-8');
+      this.data = JSON.parse(data);
+      console.log(`Datos desde ${this.dataFile} cargados correctamente`);
+    } catch (error) {
+      // TODO: esto es solo un ejemplo de manejo de error y se debería mover a código común para reutilizarlo.
+      if (error instanceof Error) {
+        if ('extensions' in error && 'path' in error) {
+          // Error de GraphQL
+          const gqlError = error as {
+            message: string;
+            path?: string[];
+            extensions?: Record<string, unknown>;
+          };
+          console.error(`[GraphQL Error] ${gqlError.message}`, {
+            path: gqlError.path,
+            code: gqlError.extensions?.code,
+            file: this.dataFile,
+          });
+        } else {
+          // Error estándar de Node/TypeScript
+          console.error(`[Error] No se pudo cargar el archivo ${this.dataFile}:`, {
+            message: error.message,
+            name: error.name,
+            stack: process.env.NODE_ENV === 'development' ? error.stack : undefined,
+          });
+        }
+      } else {
+        // Error de tipo desconocido
+        console.error(
+          `[Error] Ocurrió un error inesperado al cargar el archivo ${this.dataFile}:`,
+          error,
+        );
+      }
+      throw error;
+    }
   }
 
   /**
