@@ -2,8 +2,10 @@
 
 Este documento explica cómo levantar la API GraphQL en local y cómo probar los endpoints con ejemplos de consultas.
 
+El proyecto está subido en [Github: https://github.com/mdalvecc/challengeMELI](https://github.com/mdalvecc/challengeMELI).
+
 ## Prerrequisitos
-- Node.js >= 16
+- Node.js >= 20
 - npm >= 8
 
 ## Instalación
@@ -17,10 +19,16 @@ Crea un archivo `.env` en la raíz si necesitás personalizar el puerto:
 PORT=4000
 ```
 
-## Desarrollo (hot reload)
+## Desarrollo
+Para ejecutar la aplicación en modo hot reload para que se recargue automáticamente al detectar cambios en el código:
+```bash
+npm run dev:watch
+```
+sino simplemente se puede ejecutar con 
 ```bash
 npm run dev
 ```
+
 La app arranca en `http://localhost:4000/`. Apollo Server expone el Playground (introspection: true). Podés abrir el navegador y ejecutar consultas.
 
 ## Build y ejecución de producción
@@ -30,7 +38,27 @@ npm start
 ```
 Esto compila a `dist/` y levanta `node dist/index.js`.
 
-## Ejecución con Docker
+## Ejecución con Docker Compose
+Podés levantar todo más rápido con docker-compose usando el archivo `docker-compose.yml` incluido.
+
+```bash
+docker compose up -d --build
+# o, si ya está construida:
+docker compose up -d
+```
+Esto construye la imagen con el Dockerfile y levanta el servicio `api`. Quedará en `http://localhost:${PORT-4000}`.
+
+Variables soportadas (pueden ir en `.env` o inline):
+- `PORT` (por defecto 4000)
+- `LOG_LEVEL` (por defecto `info`)
+- `SERVICE_NAME` (por defecto `challenge-meli-api`)
+
+Para bajar los servicios:
+```bash
+docker compose down
+```
+
+## Ejecución con Docker (sin docker compose)
 Construí la imagen (multi-stage) y corré el contenedor:
 
 ```bash
@@ -50,18 +78,31 @@ docker run --rm -p 8080:8080 -e PORT=8080 challenge-meli
 Si necesitás usar tu `.env` local, podés montarlo en el contenedor:
 
 ```bash
-docker run --rm -p 4000:4000 \
-  -v "$(pwd)/.env:/app/.env:ro" \
-  challenge-meli
+docker run --rm -p 4000:4000 -v "$(pwd)/.env:/app/.env:ro" challenge-meli
 ```
 
 ## Scripts útiles
-- `npm run codegen`: genera tipos TS desde los `.graphql` hacia `src/graphql/generated/types.ts`.
 - `npm run lint` / `npm run lint:fix`: linter.
 - `npm run format`: formatea el código con Prettier.
+- `npm test`: ejecuta la suite de tests con Vitest.
+- `npm run test:coverage`: genera reporte de cobertura con `@vitest/coverage-v8`.
 
 ## Ejemplos de consultas
 A continuación, algunas queries útiles para probar la API. Reemplazá los IDs por los presentes en `src/data/products.json`.
+
+### Obtener todos los productos paginados
+```graphql
+query GetProducts($first: Int, $after: String) {
+  products(first: $first, after: $after) {
+    totalCount
+    pageInfo { hasNextPage hasPreviousPage startCursor endCursor }
+    edges {
+      node { id title description condition priceInfo { price currency } }
+      cursor
+    }
+  }
+}
+```
 
 ### Obtener un producto por ID
 ```graphql
@@ -82,25 +123,7 @@ query GetProduct($id: ID!) {
 ```
 Variables:
 ```json
-{ "id": "P001" }
-```
-
-### Listado paginado de productos
-```graphql
-query ListProducts($first: Int, $after: String) {
-  products(first: $first, after: $after) {
-    totalCount
-    pageInfo { hasNextPage endCursor }
-    edges {
-      cursor
-      node { id title priceInfo { price currency } }
-    }
-  }
-}
-```
-Variables:
-```json
-{ "first": 5 }
+{ "id": "MLB12345678" }
 ```
 
 ### Productos del mismo vendedor
@@ -118,7 +141,7 @@ query SameSeller($productId: ID!, $first: Int, $after: String) {
 ```
 Variables:
 ```json
-{ "productId": "P001", "first": 5 }
+{ "productId": "MLB12345678", "first": 5 }
 ```
 
 ### Productos relacionados
@@ -177,40 +200,14 @@ query ProductReviews($productId: ID!, $first: Int, $after: String) {
 }
 ```
 
-### Preguntas de un producto
-```graphql
-query ProductQuestions($productId: ID!, $first: Int, $after: String) {
-  productQuestions(productId: $productId, first: $first, after: $after) {
-    totalCount
-    pageInfo { hasNextPage endCursor }
-    edges {
-      cursor
-      node {
-        id
-        question
-        status
-        date
-        author { id name }
-        answer { id content date author { id name } }
-        product { id title }
-      }
-    }
-  }
-}
-```
-
-### Resumen de calificaciones
-```graphql
-query RatingSummary($productId: ID!) {
-  productRatingSummary(productId: $productId) {
-    averageRating
-    totalRatings
-    ratings { oneStar twoStars threeStars fourStars fiveStars }
-  }
-}
-```
-
 ## Tips
 - El Playground permite inspeccionar el schema y el autocompletado.
-- Si ves errores de import en tiempo de ejecución, asegurate de usar `npm run dev` (que configura `tsx` ESM) o construir antes de `npm start`.
-- Ante errores de tipado, ejecutá `npm run codegen` y `npm run type-check`.
+
+## Tests con Vitest
+Los tests están configurados con Vitest y se ubican en `tests/`.
+
+Comandos:
+```bash
+npm test           # ejecuta la suite una vez en modo CI
+npm run test:coverage  # cobertura de código
+```

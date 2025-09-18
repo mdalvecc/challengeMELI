@@ -26,7 +26,7 @@
     "format": "prettier --write \"src/**/*.{ts,tsx}\""
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=20.0.0"
   },
   "dependencies": {
     "@graphql-tools/load-files": "6.6.1",
