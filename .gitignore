@@ -1,7 +1,7 @@
 # Artifacts del build y entorno
 **/dist
 **/node_modules
-*.tsbuildinfo
+**/*.tsbuildinfo
 
 # Configuración de desarrollo
 .vscode/

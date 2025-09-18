@@ -1,23 +1,21 @@
 {
   "compilerOptions": {
     /* Base Options */
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "sourceMap": true,
     "target": "ES2020",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "esModuleInterop": true,
     "lib": [
       "ES2020"
     ],
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "sourceMap": true,
+    "module": "NodeNext",
+    "strict": true,
     "declaration": true,
     "declarationMap": true,
     "composite": true,
     "incremental": true,
     "tsBuildInfoFile": "node_modules/.cache/tsc/tsconfig.tsbuildinfo",
     /* Strict Type-Checking Options */
-    "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
@@ -32,6 +30,8 @@
     /* Module Resolution Options */
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "NodeNext",
+    "esModuleInterop": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "allowSyntheticDefaultImports": true,
