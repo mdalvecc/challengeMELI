@@ -209,9 +209,6 @@ type Product implements Node {
     
     """Cursor para la paginación"""
     after: String
-    
-    """Mostrar solo preguntas con respuesta"""
-    onlyAnswered: Boolean = true
   ): QuestionConnection
   
   """Reseñas del producto"""

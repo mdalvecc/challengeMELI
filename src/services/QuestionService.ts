@@ -14,13 +14,11 @@ class QuestionService extends BaseService<{ questions: Question[] }> {
    * Obtiene las preguntas de un producto
    * @param id - ID del producto
    * @param pagination - Opciones de paginación
-   * @param onlyAnswered - Si es true, solo devuelve preguntas respondidas
    * @returns Conexión con las preguntas
    */
   public getProductQuestions(
     id: ID,
     pagination: PaginationOptions = { first: 10 },
-    onlyAnswered: boolean = false,
   ): Connection<Question> {
     this.validateId(id);
 
@@ -29,11 +27,6 @@ class QuestionService extends BaseService<{ questions: Question[] }> {
 
     let questions = this.data?.questions || [];
     questions = questions.filter((q: Question) => q.product.id === id);
-
-    // Filtrar por estado si es necesario
-    if (onlyAnswered) {
-      questions = questions.filter((q: Question) => q.status === 'ANSWERED');
-    }
 
     // Ordenar por fecha (más recientes primero)
     questions.sort(

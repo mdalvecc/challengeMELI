@@ -107,16 +107,11 @@ export const Query: Resolvers['Query'] = {
    */
   productQuestions: async (
     _: unknown,
-    {
-      productId,
-      first = 10,
-      after,
-      onlyAnswered = true,
-    }: { productId: string; first?: number; after?: string; onlyAnswered?: boolean },
+    { productId, first = 10, after }: { productId: string; first?: number; after?: string },
     _context: Context,
   ) => {
     try {
-      return questionService.getProductQuestions(productId, { first, after }, onlyAnswered);
+      return questionService.getProductQuestions(productId, { first, after });
     } catch (error) {
       console.error('Error al obtener las preguntas del producto:', error);
       throw new Error('No se pudieron obtener las preguntas del producto');

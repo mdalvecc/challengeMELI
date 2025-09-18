@@ -53,7 +53,7 @@ export type ProductResolvers = IResolvers & {
     }>;
     productQuestions: (
       _: unknown,
-      args: { productId: ID; onlyAnswered?: boolean } & PaginationArgs,
+      args: { productId: ID } & PaginationArgs,
       context: Context,
     ) => Promise<{
       edges: Array<{ node: Question; cursor: string }>;
@@ -73,7 +73,7 @@ export type ProductResolvers = IResolvers & {
   Product: {
     questions: (
       product: Product,
-      args: PaginationArgs & { onlyAnswered?: boolean },
+      args: PaginationArgs,
       context: Context,
     ) => Promise<{
       edges: Array<{ node: Question; cursor: string }>;

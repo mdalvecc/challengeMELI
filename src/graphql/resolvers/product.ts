@@ -16,7 +16,7 @@ const Product: Resolvers['Product'] = {
    */
   questions: async (
     product: { id: string },
-    { first = 10, after }: { first?: number; after?: string; onlyAnswered?: boolean },
+    { first = 10, after }: { first?: number; after?: string },
     _context: Context,
   ) => {
     try {
