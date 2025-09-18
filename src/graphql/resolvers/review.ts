@@ -1,4 +1,6 @@
 import type { Author, ProductPreview, Review as ReviewType } from '@app-types/index.js';
+import { getLogger } from '@app/lib/logger.js';
+import { InternalError, NotFoundError } from '@graphql/errors/errors.js';
 import type { Context, Resolvers } from '@graphql/types/resolvers.js';
 import productService from '@services/ProductService.js';
 
@@ -38,10 +40,13 @@ const Review: Resolvers['Review'] = {
         Object.assign(p, merged);
         return merged;
       }
-      throw new Error('La reseña no contiene el producto resuelto');
+      throw new NotFoundError('La reseña no contiene el producto resuelto');
     } catch (error) {
-      console.error('Error al obtener el producto de la reseña:', error);
-      throw new Error('No se pudo obtener el producto de la reseña');
+      getLogger(context).error(
+        { err: error, reviewId: review.id, productId: review.product?.id },
+        'Error al obtener el producto de la reseña',
+      );
+      throw new InternalError('No se pudo obtener el producto de la reseña');
     }
   },
 };

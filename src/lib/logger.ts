@@ -35,3 +35,8 @@ const prettyStream = isDev
 export const logger = prettyStream ? pino(baseOptions, prettyStream) : pino(baseOptions);
 
 export type AppLogger = typeof logger;
+
+// Helper para obtener el logger del contexto (si existe) o el base
+export function getLogger(context?: { logger?: AppLogger } | null): AppLogger {
+  return context && context.logger ? context.logger : logger;
+}

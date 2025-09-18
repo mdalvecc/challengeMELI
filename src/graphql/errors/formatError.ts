@@ -1,8 +1,9 @@
+import { logger } from '@app/lib/logger.js';
 import { GraphQLError, GraphQLFormattedError } from 'graphql';
 
 export default function formatGraphQLError(error: GraphQLError): GraphQLFormattedError {
-  // Registrar el error en el servidor
-  console.error('GraphQL Error:', error);
+  // Registrar el error en el servidor (con requestId si está disponible)
+  logger.error({ err: error, requestId: error.extensions?.requestId }, 'GraphQL Error');
 
   // No exponer detalles internos en producción
   const isProduction = process.env.NODE_ENV === 'production';

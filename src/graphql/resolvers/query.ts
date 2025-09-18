@@ -1,3 +1,5 @@
+import { getLogger } from '@app/lib/logger.js';
+import { InternalError, NotFoundError } from '@graphql/errors/errors.js';
 import type { Context, Resolvers } from '@graphql/types/resolvers.js';
 import productService from '@services/ProductService.js';
 import questionService from '@services/QuestionService.js';
@@ -7,12 +9,15 @@ export const Query: Resolvers['Query'] = {
   /**
    * Obtiene un producto por su ID
    */
-  product: async (_: unknown, { id }: { id: string }, _context: Context) => {
+  product: async (_: unknown, { id }: { id: string }, context: Context) => {
     try {
       return productService.getProductById(id);
     } catch (error) {
-      console.error('Error al obtener el producto:', error);
-      throw new Error('No se pudo obtener el producto');
+      getLogger(context).error({ err: error, id }, 'Error al obtener el producto');
+      throw new NotFoundError('No se pudo obtener el producto', {
+        requestId: context.requestId,
+        details: { productId: id },
+      });
     }
   },
 
@@ -22,13 +27,19 @@ export const Query: Resolvers['Query'] = {
   products: async (
     _: unknown,
     { first = 10, after }: { first?: number; after?: string },
-    _context: Context,
+    context: Context,
   ) => {
     try {
       return productService.getAllProducts({ first, after });
     } catch (error) {
-      console.error('Error al obtener el listado de productos:', error);
-      throw new Error('No se pudo obtener el listado de productos');
+      getLogger(context).error(
+        { err: error, first, after },
+        'Error al obtener el listado de productos',
+      );
+      throw new InternalError('No se pudo obtener el listado de productos', {
+        requestId: context.requestId,
+        details: { first, after },
+      });
     }
   },
 
@@ -38,13 +49,19 @@ export const Query: Resolvers['Query'] = {
   sameSellerProducts: async (
     _: unknown,
     { productId, first, after }: { productId: string; first?: number; after?: string },
-    _context: Context,
+    context: Context,
   ) => {
     try {
       return productService.getSameSellerProducts(productId, { first, after });
     } catch (error) {
-      console.error('Error al obtener productos del mismo vendedor:', error);
-      throw new Error('No se pudieron obtener los productos del mismo vendedor');
+      getLogger(context).error(
+        { err: error, productId, first, after },
+        'Error al obtener productos del mismo vendedor',
+      );
+      throw new NotFoundError('No se pudieron obtener los productos del mismo vendedor', {
+        requestId: context.requestId,
+        details: { productId, first, after },
+      });
     }
   },
 
@@ -54,13 +71,19 @@ export const Query: Resolvers['Query'] = {
   relatedProducts: async (
     _: unknown,
     { productId, first, after }: { productId: string; first?: number; after?: string },
-    _context: Context,
+    context: Context,
   ) => {
     try {
       return productService.getRelatedProducts(productId, { first, after });
     } catch (error) {
-      console.error('Error al obtener productos relacionados:', error);
-      throw new Error('No se pudieron obtener los productos relacionados');
+      getLogger(context).error(
+        { err: error, productId, first, after },
+        'Error al obtener productos relacionados',
+      );
+      throw new NotFoundError('No se pudieron obtener los productos relacionados', {
+        requestId: context.requestId,
+        details: { productId, first, after },
+      });
     }
   },
 
@@ -70,13 +93,22 @@ export const Query: Resolvers['Query'] = {
   frequentlyBoughtTogether: async (
     _: unknown,
     { productId, first = 4, after }: { productId: string; first?: number; after?: string },
-    _context: Context,
+    context: Context,
   ) => {
     try {
       return productService.getFrequentlyBoughtTogether(productId, { first, after });
     } catch (error) {
-      console.error('Error al obtener productos frecuentemente comprados juntos:', error);
-      throw new Error('No se pudieron obtener los productos frecuentemente comprados juntos');
+      getLogger(context).error(
+        { err: error, productId, first, after },
+        'Error al obtener productos frecuentemente comprados juntos',
+      );
+      throw new NotFoundError(
+        'No se pudieron obtener los productos frecuentemente comprados juntos',
+        {
+          requestId: context.requestId,
+          details: { productId, first, after },
+        },
+      );
     }
   },
 
@@ -86,7 +118,7 @@ export const Query: Resolvers['Query'] = {
   productReviews: async (
     _: unknown,
     { productId, first = 10, after }: { productId: string; first?: number; after?: string },
-    _context: Context,
+    context: Context,
   ) => {
     try {
       const connection = reviewService.getProductReviews(productId, { first, after });
@@ -97,8 +129,14 @@ export const Query: Resolvers['Query'] = {
         summary,
       };
     } catch (error) {
-      console.error('Error al obtener las opiniones del producto:', error);
-      throw new Error('No se pudieron obtener las opiniones del producto');
+      getLogger(context).error(
+        { err: error, productId, first, after },
+        'Error al obtener las opiniones del producto',
+      );
+      throw new NotFoundError('No se pudieron obtener las opiniones del producto', {
+        requestId: context.requestId,
+        details: { productId, first, after },
+      });
     }
   },
 
@@ -108,13 +146,19 @@ export const Query: Resolvers['Query'] = {
   productQuestions: async (
     _: unknown,
     { productId, first = 10, after }: { productId: string; first?: number; after?: string },
-    _context: Context,
+    context: Context,
   ) => {
     try {
       return questionService.getProductQuestions(productId, { first, after });
     } catch (error) {
-      console.error('Error al obtener las preguntas del producto:', error);
-      throw new Error('No se pudieron obtener las preguntas del producto');
+      getLogger(context).error(
+        { err: error, productId, first, after },
+        'Error al obtener las preguntas del producto',
+      );
+      throw new NotFoundError('No se pudieron obtener las preguntas del producto', {
+        requestId: context.requestId,
+        details: { productId, first, after },
+      });
     }
   },
 
@@ -124,13 +168,19 @@ export const Query: Resolvers['Query'] = {
   productRatingSummary: async (
     _: unknown,
     { productId }: { productId: string },
-    _context: Context,
+    context: Context,
   ) => {
     try {
       return reviewService.getRatingSummary(productId);
     } catch (error) {
-      console.error('Error al obtener el resumen de calificaciones:', error);
-      throw new Error('No se pudo obtener el resumen de calificaciones');
+      getLogger(context).error(
+        { err: error, productId },
+        'Error al obtener el resumen de calificaciones',
+      );
+      throw new NotFoundError('No se pudo obtener el resumen de calificaciones', {
+        requestId: context.requestId,
+        details: { productId },
+      });
     }
   },
 };

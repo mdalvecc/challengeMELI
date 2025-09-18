@@ -1,3 +1,5 @@
+import { getLogger } from '@app/lib/logger.js';
+import { InternalError } from '@graphql/errors/errors.js';
 import type { Context, Resolvers } from '@graphql/types/resolvers.js';
 import questionService from '@services/QuestionService.js';
 import reviewService from '@services/ReviewService.js';
@@ -17,13 +19,16 @@ const Product: Resolvers['Product'] = {
   questions: async (
     product: { id: string },
     { first = 10, after }: { first?: number; after?: string },
-    _context: Context,
+    context: Context,
   ) => {
     try {
       return questionService.getProductQuestions(product.id, { first, after });
     } catch (error) {
-      console.error('Error al obtener las preguntas del producto:', error);
-      throw new Error('No se pudieron obtener las preguntas del producto');
+      getLogger(context).error(
+        { err: error, productId: product.id, first, after },
+        'Error al obtener las preguntas del producto',
+      );
+      throw new InternalError('No se pudieron obtener las preguntas del producto');
     }
   },
 
@@ -33,7 +38,7 @@ const Product: Resolvers['Product'] = {
   reviews: async (
     product: { id: string },
     { first = 10, after }: { first?: number; after?: string },
-    _context: Context,
+    context: Context,
   ) => {
     try {
       const connection = reviewService.getProductReviews(product.id, { first, after });
@@ -44,8 +49,11 @@ const Product: Resolvers['Product'] = {
         summary,
       };
     } catch (error) {
-      console.error('Error al obtener las opiniones del producto:', error);
-      throw new Error('No se pudieron obtener las opiniones del producto');
+      getLogger(context).error(
+        { err: error, productId: product.id, first, after },
+        'Error al obtener las opiniones del producto',
+      );
+      throw new InternalError('No se pudieron obtener las opiniones del producto');
     }
   },
 };

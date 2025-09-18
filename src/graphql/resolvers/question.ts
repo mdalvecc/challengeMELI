@@ -4,6 +4,8 @@ import type {
   ProductPreview,
   Question as QuestionType,
 } from '@app-types/index.js';
+import { getLogger } from '@app/lib/logger.js';
+import { InternalError, NotFoundError } from '@graphql/errors/errors.js';
 import type { Context, Resolvers } from '@graphql/types/resolvers.js';
 import productService from '@services/ProductService.js';
 
@@ -43,10 +45,13 @@ const Question: Resolvers['Question'] = {
         Object.assign(p, merged);
         return merged;
       }
-      throw new Error('La pregunta no contiene el producto resuelto');
+      throw new NotFoundError('La pregunta no contiene el producto resuelto');
     } catch (error) {
-      console.error('Error al obtener el producto de la pregunta:', error);
-      throw new Error('No se pudo obtener el producto de la pregunta');
+      getLogger(context).error(
+        { err: error, questionId: question.id, productId: question.product?.id },
+        'Error al obtener el producto de la pregunta',
+      );
+      throw new InternalError('No se pudo obtener el producto de la pregunta');
     }
   },
 

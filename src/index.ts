@@ -1,5 +1,6 @@
 import 'dotenv/config';
 
+import { logger } from '@app/lib/logger.js';
 import { createServer } from './server.js';
 import { initializeServices } from './services/init.js';
 import { logBootMessages } from './utils/bootMessages.js';
@@ -16,25 +17,24 @@ try {
   const { url } = await server.listen({ port: PORT });
 
   logBootMessages(url);
-  console.log('Servidor iniciado correctamente');
+  logger.info('Servidor iniciado correctamente');
 } catch (error) {
-  console.error('Error al iniciar el servidor en el startServer');
-  console.error(error);
+  logger.error({ err: error }, 'Error al iniciar el servidor en el startServer');
   process.exit(1);
 }
 
 // Manejar cierre limpio del servidor
 process.on('SIGINT', () => {
-  console.log('\nApagando el servidor...');
+  logger.info('SIGINT recibido. Apagando el servidor...');
   process.exit(0);
 });
 
 process.on('unhandledRejection', reason => {
-  console.error('Unhandled Rejection:', reason);
-  //process.exit(1);
+  logger.error({ err: reason }, 'Unhandled Rejection');
+  // process.exit(1);
 });
 
 process.on('uncaughtException', err => {
-  console.error('Uncaught Exception:', err);
-  //process.exit(1);
+  logger.error({ err }, 'Uncaught Exception');
+  // process.exit(1);
 });

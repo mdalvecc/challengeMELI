@@ -2,6 +2,7 @@ import { logger } from '@app/lib/logger.js';
 import path from 'path';
 
 import { Connection, Edge, ID, PaginationOptions } from '@app-types/index.js';
+import { InternalError, InvalidArgumentError, NotFoundError } from '@graphql/errors/errors.js';
 import { promises as fs } from 'fs';
 import { fileURLToPath } from 'url';
 
@@ -155,17 +156,19 @@ export default abstract class BaseService<BaseData> {
    */
   protected findById<U extends { id: string }>(id: ID, collection: keyof BaseData): U {
     if (!this.data) {
-      throw new Error('Los datos no han sido cargados. Por favor, llame a initialize primero.');
+      throw new InternalError(
+        'Los datos no han sido cargados. Por favor, llame a initialize primero.',
+      );
     }
 
     const items = this.data[collection] as U[] | undefined;
     if (!items) {
-      throw new Error(`La colección ${String(collection)} no existe`);
+      throw new NotFoundError(`La colección ${String(collection)} no existe`);
     }
 
     const item = items.find(item => item.id === id);
     if (!item) {
-      throw new Error(`${String(collection)} con ID ${id} no encontrado`);
+      throw new NotFoundError(`${String(collection)} con ID ${id} no encontrado`);
     }
 
     return item;
@@ -178,11 +181,11 @@ export default abstract class BaseService<BaseData> {
    */
   protected validateId(id: ID, prefix?: string): void {
     if (typeof id !== 'string' || id.trim() === '') {
-      throw new Error('El ID debe ser una cadena no vacía');
+      throw new InvalidArgumentError('El ID debe ser una cadena no vacía');
     }
 
     if (prefix && !id.startsWith(prefix)) {
-      throw new Error(`El ID debe comenzar con '${prefix}'`);
+      throw new InvalidArgumentError(`El ID debe comenzar con '${prefix}'`);
     }
   }
 }
