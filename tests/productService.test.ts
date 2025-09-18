@@ -1,5 +1,5 @@
 import { beforeAll, describe, expect, it } from 'vitest';
-import productService from '@services/ProductService';
+import productService from '../src/services/ProductService.js';
 
 const PRODUCT_ID = 'MLB12345678';
 
@@ -10,20 +10,24 @@ describe('ProductService', () => {
 
   it('getProductById devuelve el producto esperado', () => {
     const product = productService.getProductById(PRODUCT_ID);
+
     expect(product).toBeDefined();
     expect(product.id).toBe(PRODUCT_ID);
-    expect(product.title).toBeTruthy();
+    expect(product.title).toBe('Smartphone XYZ Pro 128GB');
   });
 
   it('getAllProducts aplica paginación (first)', () => {
-    const page = productService.getAllProducts({ first: 2 });
-    expect(page.totalCount).toBeGreaterThan(0);
-    expect(page.edges.length).toBeLessThanOrEqual(2);
+    const page = productService.getAllProducts({ first: 3 });
+
+    expect(page.totalCount).toBe(9);
+    expect(page.edges.length).toBeLessThanOrEqual(3);
     expect(page.pageInfo).toBeDefined();
+    expect(page.pageInfo.hasNextPage).toBeTruthy();
   });
 
   it('paginación con cursor (after) devuelve la siguiente página', () => {
     const firstPage = productService.getAllProducts({ first: 1 });
+
     expect(firstPage.edges.length).toBe(1);
     const after = firstPage.edges[0].cursor;
 
@@ -41,8 +45,9 @@ describe('ProductService', () => {
 
   it('getFrequentlyBoughtTogether devuelve una conexión válida', () => {
     const fbt = productService.getFrequentlyBoughtTogether(PRODUCT_ID, { first: 3 });
+
     expect(fbt).toBeDefined();
-    expect(fbt.totalCount).toBeGreaterThanOrEqual(0);
-    expect(fbt.edges.length).toBeLessThanOrEqual(3);
+    expect(fbt.totalCount).toBe(0);
+    expect(fbt.edges.length).toBe(0);
   });
 });
