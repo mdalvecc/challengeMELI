@@ -1,4 +1,10 @@
+# Artifacts del build
 **/dist
 **/node_modules
 *.tsbuildinfo
+
+# Configuración de desarrollo
 .vscode/
+
+# Artifacts de GraphQL
+src/graphql/generated

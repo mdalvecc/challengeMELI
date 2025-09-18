@@ -8,7 +8,7 @@
   "type": "module",
   "scripts": {
     "prepare": "husky install",
-    "prebuild": "npm run clean",
+    "prebuild": "npm run clean && npm run codegen",
     "build": "tsc",
     "postbuild": "tsc-alias -p tsconfig.json && npm run copy:schema && npm run copy:data",
     "copy:schema": "npx cpx2 \"src/graphql/schema/**/*\" \"dist/graphql/schema\"",
@@ -17,6 +17,7 @@
     "start": "node dist/index.js",
     "dev": "NODE_ENV=development NODE_OPTIONS='--import tsx' tsx src/index.ts",
     "dev:watch": "NODE_ENV=development NODE_OPTIONS='--import tsx' tsx watch src/index.ts",
+    "codegen": "graphql-codegen",
     "test": "echo \"Error: no test specified\" && exit 1",
     "type-check": "tsc --noEmit",
     "lint": "eslint . --ext .ts,.tsx --cache --cache-location ./node_modules/.cache/eslint",
@@ -31,11 +32,15 @@
     "@graphql-tools/merge": "8.4.2",
     "@graphql-tools/schema": "9.0.19",
     "apollo-server": "3.12.1",
+    "dataloader": "^2.2.3",
     "dotenv": "16.4.5",
     "graphql": "16.8.1",
     "graphql-scalars": "1.24.2"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^6.0.0",
+    "@graphql-codegen/typescript": "^5.0.0",
+    "@graphql-codegen/typescript-resolvers": "^5.0.0",
     "@types/graphql": "14.5.0",
     "@types/node": "20.0.0",
     "@typescript-eslint/eslint-plugin": "6.0.0",
@@ -50,9 +55,9 @@
     "rimraf": "5.0.5",
     "ts-node": "10.9.2",
     "ts-node-dev": "2.0.0",
+    "tsc-alias": "1.8.8",
     "tsconfig-paths": "4.2.0",
     "tsx": "4.20.5",
-    "tsc-alias": "1.8.8",
     "typescript": "5.9.2"
   }
 }

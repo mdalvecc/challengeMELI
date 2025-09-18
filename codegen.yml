@@ -1,0 +1,20 @@
+schema:
+  - "src/graphql/schema/**/*.graphql"
+
+generates:
+  src/graphql/generated/types.ts:
+    plugins:
+      - typescript
+      - typescript-resolvers
+    config:
+      useIndexSignature: true
+      avoidOptionals: false
+      maybeValue: T | null
+      contextType: ../types/resolvers#Context
+      mappers:
+        Product: "@app-types/index#Product"
+        ProductPreview: "@app-types/index#ProductPreview"
+        Review: "@app-types/index#Review"
+        Question: "@app-types/index#Question"
+      scalars:
+        Date: Date
