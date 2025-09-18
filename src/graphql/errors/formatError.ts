@@ -1,5 +1,5 @@
 import { logger } from '@app/lib/logger.js';
-import { GraphQLError, GraphQLFormattedError } from 'graphql';
+import { GraphQLError, GraphQLFormattedError } from 'graphql/index.js';
 
 export default function formatGraphQLError(error: GraphQLError): GraphQLFormattedError {
   // Registrar el error en el servidor (con requestId si está disponible)

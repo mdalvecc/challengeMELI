@@ -1,0 +1,18 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: challenge-meli:latest
+    container_name: challenge-meli-api
+    environment:
+      - NODE_ENV=production
+      - PORT=${PORT-4000}
+      - LOG_LEVEL=${LOG_LEVEL-info}
+      - SERVICE_NAME=${SERVICE_NAME-challenge-meli-api}
+    ports:
+      - "${PORT-4000}:4000"
+    restart: unless-stopped
+
+volumes:
+  node_modules:
