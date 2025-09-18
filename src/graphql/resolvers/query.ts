@@ -69,11 +69,11 @@ export const Query: Resolvers['Query'] = {
    */
   frequentlyBoughtTogether: async (
     _: unknown,
-    { productId, limit = 4 }: { productId: string; limit?: number },
+    { productId, first = 4, after }: { productId: string; first?: number; after?: string },
     _context: Context,
   ) => {
     try {
-      return productService.getFrequentlyBoughtTogether(productId, { first: limit });
+      return productService.getFrequentlyBoughtTogether(productId, { first, after });
     } catch (error) {
       console.error('Error al obtener productos frecuentemente comprados juntos:', error);
       throw new Error('No se pudieron obtener los productos frecuentemente comprados juntos');
