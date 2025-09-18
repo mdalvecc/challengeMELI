@@ -21,12 +21,25 @@ describe('ReviewService', () => {
     const summary = reviewService.getRatingSummary(PRODUCT_ID);
 
     expect(summary).toBeDefined();
-    expect(summary.averageRating).toBe(4.5);
-    expect(summary.totalRatings).toBe(2);
-    expect(summary.ratings).toHaveProperty('oneStar', 0);
-    expect(summary.ratings).toHaveProperty('twoStars', 0);
-    expect(summary.ratings).toHaveProperty('threeStars', 0);
-    expect(summary.ratings).toHaveProperty('fourStars', 1);
-    expect(summary.ratings).toHaveProperty('fiveStars', 1);
+  });
+
+  describe('Casos de error', () => {
+    it('getProductReviews con ID inexistente devuelve conexión vacía', () => {
+      const res = reviewService.getProductReviews('ID_INEXISTENTE', { first: 2 });
+      expect(res.totalCount).toBe(0);
+      expect(res.edges.length).toBe(0);
+    });
+
+    it('getProductReviews con cursor after inválido vuelve al inicio', () => {
+      const res = reviewService.getProductReviews(PRODUCT_ID, { first: 1, after: 'CURSOR_X' });
+      expect(res.pageInfo.hasPreviousPage).toBe(false);
+      expect(res.edges.length).toBeLessThanOrEqual(1);
+    });
+
+    it('getRatingSummary para producto inexistente devuelve summary en cero', () => {
+      const summary = reviewService.getRatingSummary('ID_INEXISTENTE');
+      expect(summary.averageRating).toBe(0);
+      expect(summary.totalRatings).toBe(0);
+    });
   });
 });

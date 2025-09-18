@@ -50,4 +50,22 @@ describe('ProductService', () => {
     expect(fbt.totalCount).toBe(0);
     expect(fbt.edges.length).toBe(0);
   });
+
+  describe('Casos de error', () => {
+    it('getProductById lanza error con ID inexistente', () => {
+      expect(() => productService.getProductById('ID_INEXISTENTE')).toThrowError();
+    });
+
+    it('getAllProducts con cursor after inválido vuelve al inicio', () => {
+      const page = productService.getAllProducts({ first: 2, after: 'CURSOR_INVALIDO' });
+      expect(page.pageInfo.hasPreviousPage).toBe(false);
+      expect(page.edges.length).toBeLessThanOrEqual(2);
+    });
+
+    it('getFrequentlyBoughtTogether lanza error si el producto no existe', () => {
+      expect(() =>
+        productService.getFrequentlyBoughtTogether('ID_INEXISTENTE', { first: 2 }),
+      ).toThrowError();
+    });
+  });
 });

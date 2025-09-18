@@ -19,6 +19,7 @@
     "dev:watch": "NODE_ENV=development NODE_OPTIONS='--import tsx' tsx watch src/index.ts",
     "codegen": "graphql-codegen",
     "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
     "type-check": "tsc --noEmit",
     "lint": "eslint . --ext .ts,.tsx --cache --cache-location ./node_modules/.cache/eslint",
     "lint:fix": "npm run lint -- --fix",
@@ -32,19 +33,20 @@
     "@graphql-tools/merge": "8.4.2",
     "@graphql-tools/schema": "9.0.19",
     "apollo-server": "3.12.1",
-    "dataloader": "^2.2.3",
+    "dataloader": "2.2.3",
     "dotenv": "16.4.5",
     "graphql": "16.8.1",
     "graphql-scalars": "1.24.2"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^6.0.0",
-    "@graphql-codegen/typescript": "^5.0.0",
-    "@graphql-codegen/typescript-resolvers": "^5.0.0",
+    "@graphql-codegen/cli": "6.0.0",
+    "@graphql-codegen/typescript": "5.0.0",
+    "@graphql-codegen/typescript-resolvers": "5.0.0",
     "@types/graphql": "14.5.0",
     "@types/node": "20.0.0",
     "@typescript-eslint/eslint-plugin": "6.0.0",
     "@typescript-eslint/parser": "6.0.0",
+    "@vitest/coverage-v8": "3.2.4",
     "cpx2": "8.0.0",
     "eslint": "8.45.0",
     "eslint-config-prettier": "8.8.0",
@@ -59,7 +61,7 @@
     "tsconfig-paths": "4.2.0",
     "tsx": "4.20.5",
     "typescript": "5.9.2",
-    "vitest": "1.6.0",
-    "vite-tsconfig-paths": "5.1.2"
+    "vite-tsconfig-paths": "5.1.2",
+    "vitest": "3.2.4"
   }
 }

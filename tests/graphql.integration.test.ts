@@ -117,4 +117,141 @@ describe('GraphQL API (integration)', () => {
     expect(res.data?.productQuestions).toBeDefined();
     expect(res.data?.productQuestions.edges.length).toBe(2);
   });
+
+  it('Query.products pagina con after válido', async () => {
+    // Primero obtenemos la primera página para capturar un cursor válido
+    const first = await server.executeOperation({
+      query: /* GraphQL */ `
+        query ($first: Int) {
+          products(first: $first) {
+            totalCount
+            edges {
+              cursor
+            }
+            pageInfo {
+              hasNextPage
+            }
+          }
+        }
+      `,
+      variables: { first: 1 },
+    });
+
+    expect(first.errors).toBeUndefined();
+    const after = first.data?.products.edges?.[0]?.cursor as string;
+
+    const second = await server.executeOperation({
+      query: /* GraphQL */ `
+        query ($first: Int, $after: String) {
+          products(first: $first, after: $after) {
+            edges {
+              cursor
+            }
+            pageInfo {
+              hasPreviousPage
+            }
+          }
+        }
+      `,
+      variables: { first: 1, after },
+    });
+
+    expect(second.errors).toBeUndefined();
+    expect(second.data?.products.pageInfo.hasPreviousPage).toBe(true);
+    expect(second.data?.products.edges.length).toBeLessThanOrEqual(1);
+  });
+
+  it('Query.products con after inválido vuelve al inicio', async () => {
+    const res = await server.executeOperation({
+      query: /* GraphQL */ `
+        query ($first: Int, $after: String) {
+          products(first: $first, after: $after) {
+            edges {
+              cursor
+            }
+            pageInfo {
+              hasPreviousPage
+            }
+          }
+        }
+      `,
+      variables: { first: 2, after: 'CURSOR_INVALIDO' },
+    });
+
+    expect(res.errors).toBeUndefined();
+    expect(res.data?.products.pageInfo.hasPreviousPage).toBe(false);
+    expect(res.data?.products.edges.length).toBeLessThanOrEqual(2);
+  });
+
+  it('Query.sameSellerProducts devuelve productos del mismo vendedor', async () => {
+    const res = await server.executeOperation({
+      query: /* GraphQL */ `
+        query ($id: ID!, $first: Int) {
+          sameSellerProducts(productId: $id, first: $first) {
+            totalCount
+            edges {
+              node {
+                id
+                seller {
+                  id
+                }
+              }
+            }
+          }
+        }
+      `,
+      variables: { id: PRODUCT_ID, first: 2 },
+    });
+
+    expect(res.errors).toBeUndefined();
+    expect(res.data?.sameSellerProducts).toBeDefined();
+    expect(res.data?.sameSellerProducts.edges.length).toBeLessThanOrEqual(2);
+  });
+
+  it('Query.relatedProducts devuelve productos relacionados', async () => {
+    const res = await server.executeOperation({
+      query: /* GraphQL */ `
+        query ($id: ID!, $first: Int) {
+          relatedProducts(productId: $id, first: $first) {
+            totalCount
+            edges {
+              node {
+                id
+                category {
+                  id
+                }
+              }
+            }
+          }
+        }
+      `,
+      variables: { id: PRODUCT_ID, first: 2 },
+    });
+
+    expect(res.errors).toBeUndefined();
+    expect(res.data?.relatedProducts).toBeDefined();
+    expect(res.data?.relatedProducts.edges.length).toBeLessThanOrEqual(2);
+  });
+
+  it('Query.frequentlyBoughtTogether devuelve conexión (puede estar vacía)', async () => {
+    const res = await server.executeOperation({
+      query: /* GraphQL */ `
+        query ($id: ID!, $first: Int) {
+          frequentlyBoughtTogether(productId: $id, first: $first) {
+            totalCount
+            edges {
+              node {
+                id
+              }
+            }
+          }
+        }
+      `,
+      variables: { id: PRODUCT_ID, first: 3 },
+    });
+
+    expect(res.errors).toBeUndefined();
+    expect(res.data?.frequentlyBoughtTogether).toBeDefined();
+    expect(res.data?.frequentlyBoughtTogether.edges.length).toBeLessThanOrEqual(3);
+  });
 });
