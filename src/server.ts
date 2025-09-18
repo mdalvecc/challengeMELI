@@ -1,14 +1,16 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+import type { Product } from '@app-types/index.js';
 import { loadFilesSync } from '@graphql-tools/load-files';
 import { mergeTypeDefs } from '@graphql-tools/merge';
 import { makeExecutableSchema } from '@graphql-tools/schema';
+import formatGraphQLError from '@graphql/errors/formatError.js';
+import resolvers from '@graphql/resolvers/index.js';
+import type { Context } from '@graphql/types/resolvers.js';
+import productService from '@services/ProductService.js';
 import { ApolloServer } from 'apollo-server';
-
-import formatGraphQLError from './graphql/errors/formatError.js';
-
-import resolvers from './graphql/resolvers/index.js';
+import DataLoader from 'dataloader';
 
 // Configuración de __dirname para ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -27,10 +29,15 @@ const schema = makeExecutableSchema({
 export async function createServer(): Promise<ApolloServer> {
   const server = new ApolloServer({
     schema,
-    context: ({ req }): { authToken: string } => ({
-      // Aquí podrías agregar autenticación, autorización, etc.
-      authToken: req.headers.authorization || '',
-    }),
+    context: ({ req }): Context => {
+      const productLoader = new DataLoader<string, Product>(async ids => {
+        return ids.map(id => productService.getProductById(id));
+      });
+      return {
+        authToken: req.headers.authorization || '',
+        productLoader,
+      };
+    },
     // Habilitar introspection para que funcione el playground
     introspection: true,
     formatError: formatGraphQLError,

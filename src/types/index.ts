@@ -136,6 +136,11 @@ export interface Product {
   ratingSummary?: RatingSummary;
 }
 
+export type ProductPreview = Pick<
+  Product,
+  'id' | 'title' | 'images' | 'category' | 'seller' | 'priceInfo' | 'paymentMethods'
+>;
+
 // Review related types
 export interface Author {
   id: ID;
@@ -144,7 +149,7 @@ export interface Author {
 
 export interface Review {
   id: ID;
-  product: Product;
+  product: ProductPreview;
   rating: number;
   title?: string;
   content?: string;
@@ -172,7 +177,7 @@ export type QuestionStatus = 'ANSWERED' | 'UNANSWERED' | 'DELETED';
 
 export interface Question {
   id: ID;
-  product: Product;
+  product: ProductPreview;
   question: string;
   answer?: Answer;
   date: Date;

@@ -6,7 +6,7 @@ type Question implements Node {
   id: ID!
   
   """El producto al que pertenece la pregunta"""
-  product: Product!
+  product: ProductPreview!
   
   """Texto de la pregunta"""
   question: String!

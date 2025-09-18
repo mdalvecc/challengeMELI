@@ -40,7 +40,7 @@ type Review implements Node {
   id: ID!
   
   """El producto al que pertenece la reseña"""
-  product: Product!
+  product: ProductPreview!
   
   """Autor de la reseña"""
   author: Author!

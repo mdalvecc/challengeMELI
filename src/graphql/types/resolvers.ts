@@ -8,13 +8,17 @@ import {
   type Author,
   type Nullable,
   type PageInfo,
+  type ProductPreview,
 } from '@app-types/index.js';
 import { IResolvers } from '@graphql-tools/utils';
+import type DataLoader from 'dataloader';
 import { DateTimeResolver } from 'graphql-scalars';
 
 // Context type for GraphQL resolvers
 export interface Context {
   authToken?: string;
+  // Per-request DataLoader for products
+  productLoader?: DataLoader<string, Product>;
 }
 
 // Pagination arguments for GraphQL queries
@@ -92,12 +96,12 @@ export type ProductResolvers = IResolvers & {
   };
 
   Review: {
-    product: (review: Review, _: unknown, context: Context) => Promise<Product>;
+    product: (review: Review, _: unknown, context: Context) => Promise<ProductPreview>;
     author: (review: Review, _: unknown, context: Context) => Promise<Author>;
   };
 
   Question: {
-    product: (question: Question, _: unknown, context: Context) => Promise<Product>;
+    product: (question: Question, _: unknown, context: Context) => Promise<ProductPreview>;
     author: (question: Question, _: unknown, context: Context) => Promise<Author>;
     answer: (question: Question, _: unknown, context: Context) => Promise<Nullable<Answer>>;
   };

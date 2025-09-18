@@ -1,5 +1,6 @@
-import type { Author, Product, Review as ReviewType } from '@app-types/index.js';
-import type { Resolvers } from '@graphql/types/resolvers.js';
+import type { Author, ProductPreview, Review as ReviewType } from '@app-types/index.js';
+import type { Context, Resolvers } from '@graphql/types/resolvers.js';
+import productService from '@services/ProductService.js';
 
 const Review: Resolvers['Review'] = {
   /**
@@ -14,9 +15,29 @@ const Review: Resolvers['Review'] = {
   /**
    * Resuelve el producto de una reseña
    */
-  product: async (review: ReviewType): Promise<Product> => {
+  product: async (
+    review: ReviewType,
+    _args: unknown,
+    context: Context,
+  ): Promise<ProductPreview> => {
     try {
-      if (review.product) return review.product;
+      if (review.product) {
+        const p = review.product;
+        const full = context.productLoader
+          ? await context.productLoader.load(p.id)
+          : productService.getProductById(p.id);
+        const merged: ProductPreview = {
+          id: full.id,
+          title: p.title ?? full.title,
+          images: full.images,
+          category: full.category,
+          seller: full.seller,
+          priceInfo: full.priceInfo,
+          paymentMethods: full.paymentMethods,
+        };
+        Object.assign(p, merged);
+        return merged;
+      }
       throw new Error('La reseña no contiene el producto resuelto');
     } catch (error) {
       console.error('Error al obtener el producto de la reseña:', error);

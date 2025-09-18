@@ -227,21 +227,24 @@ Vista previa de un producto (para listados)
 type ProductPreview implements Node {
   """ID del producto"""
   id: ID!
-  
+
   """Título del producto"""
   title: String!
-  
+
+  """URLs de las imágenes del producto"""
+  images: [String!]!
+
+  """Categoría principal"""
+  category: Category!
+
+  """Información del vendedor"""
+  seller: Seller!
+
   """Información de precios"""
   priceInfo: PriceInfo!
-  
-  """URL de la imagen principal"""
-  image: String!
-  
-  """Indica si tiene envío gratis"""
-  freeShipping: Boolean!
-  
-  """Condición del producto"""
-  condition: ProductCondition!
+
+  """Métodos de pago aceptados"""
+  paymentMethods: [PaymentMethod!]!
 }
 
 """
@@ -263,7 +266,7 @@ Arista de producto para la conexión
 """
 type ProductEdge {
   """El ítem real"""
-  node: ProductPreview!
+  node: Product!
   
   """Cursor para este ítem"""
   cursor: String!
