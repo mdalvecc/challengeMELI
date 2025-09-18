@@ -387,6 +387,760 @@
       },
       "soldQuantity": 156,
       "availableQuantity": 23
+    },
+    {
+      "id": "MLB45678901",
+      "title": "Auriculares Bluetooth Noise Cancelling",
+      "description": "Auriculares inalámbricos con cancelación activa de ruido y estuche de carga",
+      "condition": "NEW",
+      "category": {
+        "id": "MLB1002",
+        "name": "TV y Audio",
+        "path": [
+          {
+            "id": "MLB1000",
+            "name": "Tecnología"
+          },
+          {
+            "id": "MLB1002",
+            "name": "TV y Audio"
+          }
+        ]
+      },
+      "features": [
+        {
+          "name": "Marca",
+          "value": "SoundMax"
+        },
+        {
+          "name": "Tipo",
+          "value": "In-ear"
+        },
+        {
+          "name": "Conectividad",
+          "value": "Bluetooth 5.3"
+        },
+        {
+          "name": "Autonomía",
+          "value": "30 horas con estuche"
+        },
+        {
+          "name": "Resistencia al agua",
+          "value": "IPX5"
+        }
+      ],
+      "images": [
+        "https://http2.mlstatic.com/D_NQ_NP_456789_MLA45678901_1.jpg",
+        "https://http2.mlstatic.com/D_NQ_NP_456789_MLA45678901_2.jpg",
+        "https://http2.mlstatic.com/D_NQ_NP_456789_MLA45678901_3.jpg"
+      ],
+      "priceInfo": {
+        "price": 99999,
+        "originalPrice": 129999,
+        "discountPercentage": 23,
+        "currency": "ARS",
+        "installments": {
+          "quantity": 12,
+          "amount": 8333.25,
+          "total": 99999
+        }
+      },
+      "paymentMethods": [
+        {
+          "id": "visa",
+          "name": "Visa",
+          "installments": [
+            {
+              "quantity": 1,
+              "amount": 99999,
+              "total": 99999
+            },
+            {
+              "quantity": 3,
+              "amount": 33333,
+              "total": 99999
+            },
+            {
+              "quantity": 6,
+              "amount": 16666.5,
+              "total": 99999
+            },
+            {
+              "quantity": 12,
+              "amount": 8333.25,
+              "total": 99999
+            }
+          ]
+        },
+        {
+          "id": "mastercard",
+          "name": "Mastercard",
+          "installments": [
+            {
+              "quantity": 1,
+              "amount": 99999,
+              "total": 99999
+            },
+            {
+              "quantity": 3,
+              "amount": 33333,
+              "total": 99999
+            },
+            {
+              "quantity": 6,
+              "amount": 16666.5,
+              "total": 99999
+            },
+            {
+              "quantity": 12,
+              "amount": 8333.25,
+              "total": 99999
+            }
+          ]
+        }
+      ],
+      "seller": {
+        "id": "SELLER123",
+        "name": "AudioStore",
+        "category": "MERCADOLIDER",
+        "sales": 4521,
+        "followers": 2300,
+        "products": 320,
+        "reputation": 81,
+        "url": "https://mercadolibre.com.ar/seller/SELLER123"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "pickupAvailable": true,
+        "logisticType": "FULFILLMENT"
+      },
+      "soldQuantity": 204,
+      "availableQuantity": 60
+    },
+    {
+      "id": "MLB56789012",
+      "title": "Consola PlayStation 5 Digital Edition",
+      "description": "PS5 edición digital con mando DualSense y soporte 4K HDR",
+      "condition": "NEW",
+      "category": {
+        "id": "MLB1144",
+        "name": "Consolas y Videojuegos",
+        "path": [
+          {
+            "id": "MLB1000",
+            "name": "Tecnología"
+          },
+          {
+            "id": "MLB1144",
+            "name": "Consolas y Videojuegos"
+          }
+        ]
+      },
+      "features": [
+        {
+          "name": "Marca",
+          "value": "Sony"
+        },
+        {
+          "name": "Almacenamiento",
+          "value": "825GB SSD"
+        },
+        {
+          "name": "Resolución",
+          "value": "Hasta 4K 120Hz"
+        },
+        {
+          "name": "Incluye",
+          "value": "Control DualSense"
+        }
+      ],
+      "images": [
+        "https://http2.mlstatic.com/D_NQ_NP_567890_MLA56789012_1.jpg",
+        "https://http2.mlstatic.com/D_NQ_NP_567890_MLA56789012_2.jpg",
+        "https://http2.mlstatic.com/D_NQ_NP_567890_MLA56789012_3.jpg"
+      ],
+      "priceInfo": {
+        "price": 1499999,
+        "originalPrice": 1699999,
+        "discountPercentage": 12,
+        "currency": "ARS",
+        "installments": {
+          "quantity": 12,
+          "amount": 124999.92,
+          "total": 1499999
+        }
+      },
+      "paymentMethods": [
+        {
+          "id": "visa",
+          "name": "Visa",
+          "installments": [
+            {
+              "quantity": 1,
+              "amount": 1499999,
+              "total": 1499999
+            },
+            {
+              "quantity": 3,
+              "amount": 499999.67,
+              "total": 1499999
+            },
+            {
+              "quantity": 6,
+              "amount": 249999.83,
+              "total": 1499999
+            },
+            {
+              "quantity": 12,
+              "amount": 124999.92,
+              "total": 1499999
+            }
+          ]
+        },
+        {
+          "id": "mastercard",
+          "name": "Mastercard",
+          "installments": [
+            {
+              "quantity": 1,
+              "amount": 1499999,
+              "total": 1499999
+            },
+            {
+              "quantity": 3,
+              "amount": 499999.67,
+              "total": 1499999
+            },
+            {
+              "quantity": 6,
+              "amount": 249999.83,
+              "total": 1499999
+            },
+            {
+              "quantity": 12,
+              "amount": 124999.92,
+              "total": 1499999
+            }
+          ]
+        }
+      ],
+      "seller": {
+        "id": "SELLER456",
+        "name": "GamePlanet",
+        "category": "MERCADOLIDER_PLATINUM",
+        "sales": 23567,
+        "followers": 40210,
+        "products": 980,
+        "reputation": 94,
+        "url": "https://mercadolibre.com.ar/seller/SELLER456"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "pickupAvailable": true,
+        "logisticType": "FULFILLMENT"
+      },
+      "soldQuantity": 310,
+      "availableQuantity": 35
+    },
+    {
+      "id": "MLB67890123",
+      "title": "Cafetera Express Automática 15 Bares",
+      "description": "Cafetera espresso con molinillo integrado y vaporizador de leche",
+      "condition": "NEW",
+      "category": {
+        "id": "MLB1574",
+        "name": "Pequeños Electrodomésticos",
+        "path": [
+          {
+            "id": "MLB2000",
+            "name": "Hogar"
+          },
+          {
+            "id": "MLB1574",
+            "name": "Pequeños Electrodomésticos"
+          }
+        ]
+      },
+      "features": [
+        {
+          "name": "Marca",
+          "value": "CafféPro"
+        },
+        {
+          "name": "Presión",
+          "value": "15 bar"
+        },
+        {
+          "name": "Depósito de agua",
+          "value": "1.8 L"
+        },
+        {
+          "name": "Funciones",
+          "value": "Espresso, Cappuccino, Latte"
+        }
+      ],
+      "images": [
+        "https://http2.mlstatic.com/D_NQ_NP_678901_MLA67890123_1.jpg",
+        "https://http2.mlstatic.com/D_NQ_NP_678901_MLA67890123_2.jpg",
+        "https://http2.mlstatic.com/D_NQ_NP_678901_MLA67890123_3.jpg"
+      ],
+      "priceInfo": {
+        "price": 199999,
+        "originalPrice": 249999,
+        "discountPercentage": 20,
+        "currency": "ARS",
+        "installments": {
+          "quantity": 12,
+          "amount": 16666.58,
+          "total": 199999
+        }
+      },
+      "paymentMethods": [
+        {
+          "id": "visa",
+          "name": "Visa",
+          "installments": [
+            {
+              "quantity": 1,
+              "amount": 199999,
+              "total": 199999
+            },
+            {
+              "quantity": 3,
+              "amount": 66666.33,
+              "total": 199999
+            },
+            {
+              "quantity": 6,
+              "amount": 33333.17,
+              "total": 199999
+            },
+            {
+              "quantity": 12,
+              "amount": 16666.58,
+              "total": 199999
+            }
+          ]
+        },
+        {
+          "id": "mastercard",
+          "name": "Mastercard",
+          "installments": [
+            {
+              "quantity": 1,
+              "amount": 199999,
+              "total": 199999
+            },
+            {
+              "quantity": 3,
+              "amount": 66666.33,
+              "total": 199999
+            },
+            {
+              "quantity": 6,
+              "amount": 33333.17,
+              "total": 199999
+            },
+            {
+              "quantity": 12,
+              "amount": 16666.58,
+              "total": 199999
+            }
+          ]
+        }
+      ],
+      "seller": {
+        "id": "SELLER789",
+        "name": "HomeKitchen AR",
+        "category": "MERCADOLIDER_GOLD",
+        "sales": 9876,
+        "followers": 5400,
+        "products": 410,
+        "reputation": 88,
+        "url": "https://mercadolibre.com.ar/seller/SELLER789"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "pickupAvailable": true,
+        "logisticType": "FULFILLMENT"
+      },
+      "soldQuantity": 74,
+      "availableQuantity": 18
+    },
+    {
+      "id": "MLB78901234",
+      "title": "Reloj Inteligente Sport 46mm",
+      "description": "Smartwatch con GPS, SpO2 y 14 días de batería",
+      "condition": "NEW",
+      "category": {
+        "id": "MLB1430",
+        "name": "Smartwatches",
+        "path": [
+          {
+            "id": "MLB1000",
+            "name": "Tecnología"
+          },
+          {
+            "id": "MLB1430",
+            "name": "Smartwatches"
+          }
+        ]
+      },
+      "features": [
+        {
+          "name": "Marca",
+          "value": "FitTime"
+        },
+        {
+          "name": "Tamaño de pantalla",
+          "value": "1.43\\\""
+        },
+        {
+          "name": "Conectividad",
+          "value": "Bluetooth 5.2, GPS"
+        },
+        {
+          "name": "Resistencia al agua",
+          "value": "5 ATM"
+        }
+      ],
+      "images": [
+        "https://http2.mlstatic.com/D_NQ_NP_789012_MLA78901234_1.jpg",
+        "https://http2.mlstatic.com/D_NQ_NP_789012_MLA78901234_2.jpg",
+        "https://http2.mlstatic.com/D_NQ_NP_789012_MLA78901234_3.jpg"
+      ],
+      "priceInfo": {
+        "price": 129999,
+        "originalPrice": 159999,
+        "discountPercentage": 19,
+        "currency": "ARS",
+        "installments": {
+          "quantity": 12,
+          "amount": 10833.25,
+          "total": 129999
+        }
+      },
+      "paymentMethods": [
+        {
+          "id": "visa",
+          "name": "Visa",
+          "installments": [
+            {
+              "quantity": 1,
+              "amount": 129999,
+              "total": 129999
+            },
+            {
+              "quantity": 3,
+              "amount": 43333,
+              "total": 129999
+            },
+            {
+              "quantity": 6,
+              "amount": 21666.5,
+              "total": 129999
+            },
+            {
+              "quantity": 12,
+              "amount": 10833.25,
+              "total": 129999
+            }
+          ]
+        },
+        {
+          "id": "mastercard",
+          "name": "Mastercard",
+          "installments": [
+            {
+              "quantity": 1,
+              "amount": 129999,
+              "total": 129999
+            },
+            {
+              "quantity": 3,
+              "amount": 43333,
+              "total": 129999
+            },
+            {
+              "quantity": 6,
+              "amount": 21666.5,
+              "total": 129999
+            },
+            {
+              "quantity": 12,
+              "amount": 10833.25,
+              "total": 129999
+            }
+          ]
+        }
+      ],
+      "seller": {
+        "id": "SELLER123",
+        "name": "FitTech Store",
+        "category": "MERCADOLIDER",
+        "sales": 12045,
+        "followers": 7600,
+        "products": 540,
+        "reputation": 86,
+        "url": "https://mercadolibre.com.ar/seller/SELLER123"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "pickupAvailable": true,
+        "logisticType": "FULFILLMENT"
+      },
+      "soldQuantity": 142,
+      "availableQuantity": 27
+    },
+    {
+      "id": "MLB89012345",
+      "title": "Cámara Mirrorless 24MP con Lente 15-45mm",
+      "description": "Cámara sin espejo con grabación 4K y conectividad Wi-Fi",
+      "condition": "NEW",
+      "category": {
+        "id": "MLB1006",
+        "name": "Cámaras y Accesorios",
+        "path": [
+          {
+            "id": "MLB1000",
+            "name": "Tecnología"
+          },
+          {
+            "id": "MLB1006",
+            "name": "Cámaras y Accesorios"
+          }
+        ]
+      },
+      "features": [
+        {
+          "name": "Marca",
+          "value": "Canon"
+        },
+        {
+          "name": "Resolución",
+          "value": "24.1 MP"
+        },
+        {
+          "name": "Video",
+          "value": "4K 30fps"
+        },
+        {
+          "name": "Conectividad",
+          "value": "Wi‑Fi, Bluetooth"
+        }
+      ],
+      "images": [
+        "https://http2.mlstatic.com/D_NQ_NP_890123_MLA89012345_1.jpg",
+        "https://http2.mlstatic.com/D_NQ_NP_890123_MLA89012345_2.jpg",
+        "https://http2.mlstatic.com/D_NQ_NP_890123_MLA89012345_3.jpg"
+      ],
+      "priceInfo": {
+        "price": 699999,
+        "originalPrice": 799999,
+        "discountPercentage": 13,
+        "currency": "ARS",
+        "installments": {
+          "quantity": 12,
+          "amount": 58333.25,
+          "total": 699999
+        }
+      },
+      "paymentMethods": [
+        {
+          "id": "visa",
+          "name": "Visa",
+          "installments": [
+            {
+              "quantity": 1,
+              "amount": 699999,
+              "total": 699999
+            },
+            {
+              "quantity": 3,
+              "amount": 233333,
+              "total": 699999
+            },
+            {
+              "quantity": 6,
+              "amount": 116666.5,
+              "total": 699999
+            },
+            {
+              "quantity": 12,
+              "amount": 58333.25,
+              "total": 699999
+            }
+          ]
+        },
+        {
+          "id": "mastercard",
+          "name": "Mastercard",
+          "installments": [
+            {
+              "quantity": 1,
+              "amount": 699999,
+              "total": 699999
+            },
+            {
+              "quantity": 3,
+              "amount": 233333,
+              "total": 699999
+            },
+            {
+              "quantity": 6,
+              "amount": 116666.5,
+              "total": 699999
+            },
+            {
+              "quantity": 12,
+              "amount": 58333.25,
+              "total": 699999
+            }
+          ]
+        }
+      ],
+      "seller": {
+        "id": "SELLER456",
+        "name": "FotoMundo",
+        "category": "MERCADOLIDER_GOLD",
+        "sales": 15432,
+        "followers": 9800,
+        "products": 760,
+        "reputation": 90,
+        "url": "https://mercadolibre.com.ar/seller/SELLER456"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "pickupAvailable": true,
+        "logisticType": "FULFILLMENT"
+      },
+      "soldQuantity": 98,
+      "availableQuantity": 15
+    },
+    {
+      "id": "MLB90123456",
+      "title": "Parlante Portátil Bluetooth 60W",
+      "description": "Parlante resistente al agua con iluminación LED y 20 horas de batería",
+      "condition": "NEW",
+      "category": {
+        "id": "MLB1002",
+        "name": "TV y Audio",
+        "path": [
+          {
+            "id": "MLB1000",
+            "name": "Tecnología"
+          },
+          {
+            "id": "MLB1002",
+            "name": "TV y Audio"
+          }
+        ]
+      },
+      "features": [
+        {
+          "name": "Marca",
+          "value": "BoomSound"
+        },
+        {
+          "name": "Potencia",
+          "value": "60 W"
+        },
+        {
+          "name": "Resistencia al agua",
+          "value": "IPX7"
+        },
+        {
+          "name": "Autonomía",
+          "value": "20 horas"
+        }
+      ],
+      "images": [
+        "https://http2.mlstatic.com/D_NQ_NP_901234_MLA90123456_1.jpg",
+        "https://http2.mlstatic.com/D_NQ_NP_901234_MLA90123456_2.jpg",
+        "https://http2.mlstatic.com/D_NQ_NP_901234_MLA90123456_3.jpg"
+      ],
+      "priceInfo": {
+        "price": 159999,
+        "originalPrice": 199999,
+        "discountPercentage": 20,
+        "currency": "ARS",
+        "installments": {
+          "quantity": 12,
+          "amount": 13333.25,
+          "total": 159999
+        }
+      },
+      "paymentMethods": [
+        {
+          "id": "visa",
+          "name": "Visa",
+          "installments": [
+            {
+              "quantity": 1,
+              "amount": 159999,
+              "total": 159999
+            },
+            {
+              "quantity": 3,
+              "amount": 53333,
+              "total": 159999
+            },
+            {
+              "quantity": 6,
+              "amount": 26666.5,
+              "total": 159999
+            },
+            {
+              "quantity": 12,
+              "amount": 13333.25,
+              "total": 159999
+            }
+          ]
+        },
+        {
+          "id": "mastercard",
+          "name": "Mastercard",
+          "installments": [
+            {
+              "quantity": 1,
+              "amount": 159999,
+              "total": 159999
+            },
+            {
+              "quantity": 3,
+              "amount": 53333,
+              "total": 159999
+            },
+            {
+              "quantity": 6,
+              "amount": 26666.5,
+              "total": 159999
+            },
+            {
+              "quantity": 12,
+              "amount": 13333.25,
+              "total": 159999
+            }
+          ]
+        }
+      ],
+      "seller": {
+        "id": "SELLER789",
+        "name": "ElectroBeat",
+        "category": "MERCADOLIDER",
+        "sales": 8450,
+        "followers": 4100,
+        "products": 275,
+        "reputation": 83,
+        "url": "https://mercadolibre.com.ar/seller/SELLER789"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "pickupAvailable": true,
+        "logisticType": "FULFILLMENT"
+      },
+      "soldQuantity": 189,
+      "availableQuantity": 40
     }
   ]
 }
