@@ -10,6 +10,7 @@ import {
   type PageInfo,
   type ProductPreview,
 } from '@app-types/index.js';
+import type { AppLogger } from '@app/lib/logger.js';
 import { IResolvers } from '@graphql-tools/utils';
 import type DataLoader from 'dataloader';
 import { DateTimeResolver } from 'graphql-scalars';
@@ -19,6 +20,9 @@ export interface Context {
   authToken?: string;
   // Per-request DataLoader for products
   productLoader?: DataLoader<string, Product>;
+  // Structured logger con correlación por request
+  logger?: AppLogger;
+  requestId?: string;
 }
 
 // Pagination arguments for GraphQL queries

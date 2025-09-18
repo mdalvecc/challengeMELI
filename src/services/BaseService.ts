@@ -1,3 +1,4 @@
+import { logger } from '@app/lib/logger.js';
 import path from 'path';
 
 import { Connection, Edge, ID, PaginationOptions } from '@app-types/index.js';
@@ -34,7 +35,7 @@ export default abstract class BaseService<BaseData> {
     try {
       await this.loadData();
     } catch (error) {
-      console.error(`Error al cargar ${this.dataFile}:`, error);
+      logger.error({ err: error, file: this.dataFile }, `Error al cargar ${this.dataFile}`);
       throw error;
     }
   }
@@ -104,7 +105,7 @@ export default abstract class BaseService<BaseData> {
       const filePath = path.join(this.dataDir, this.dataFile);
       const data = await fs.readFile(filePath, 'utf-8');
       this.data = JSON.parse(data);
-      console.log(`Datos desde ${this.dataFile} cargados correctamente`);
+      logger.info({ file: this.dataFile }, `Datos cargados correctamente`);
     } catch (error) {
       // TODO: esto es solo un ejemplo de manejo de error y se debería mover a código común para reutilizarlo.
       if (error instanceof Error) {
@@ -115,24 +116,30 @@ export default abstract class BaseService<BaseData> {
             path?: string[];
             extensions?: Record<string, unknown>;
           };
-          console.error(`[GraphQL Error] ${gqlError.message}`, {
-            path: gqlError.path,
-            code: gqlError.extensions?.code,
-            file: this.dataFile,
-          });
+          logger.error(
+            {
+              path: gqlError.path,
+              code: gqlError.extensions?.code,
+              file: this.dataFile,
+              err: gqlError,
+            },
+            `[GraphQL Error] ${gqlError.message}`,
+          );
         } else {
           // Error estándar de Node/TypeScript
-          console.error(`[Error] No se pudo cargar el archivo ${this.dataFile}:`, {
-            message: error.message,
-            name: error.name,
-            stack: process.env.NODE_ENV === 'development' ? error.stack : undefined,
-          });
+          logger.error(
+            {
+              file: this.dataFile,
+              err: error,
+            },
+            `[Error] No se pudo cargar el archivo ${this.dataFile}`,
+          );
         }
       } else {
         // Error de tipo desconocido
-        console.error(
-          `[Error] Ocurrió un error inesperado al cargar el archivo ${this.dataFile}:`,
-          error,
+        logger.error(
+          { file: this.dataFile, err: error },
+          '[Error] Error inesperado al cargar datos',
         );
       }
       throw error;

@@ -1,12 +1,13 @@
-import categoryService from '@services/CategoryService.js';
-import productService from '@services/ProductService.js';
-import questionService from '@services/QuestionService.js';
-import reviewService from '@services/ReviewService.js';
-import sellerService from '@services/SellerService.js';
+import { logger } from '@app/lib/logger.js';
+import categoryService from './CategoryService.js';
+import productService from './ProductService.js';
+import questionService from './QuestionService.js';
+import reviewService from './ReviewService.js';
+import sellerService from './SellerService.js';
 
 export async function initializeServices(): Promise<void> {
   try {
-    console.log('Inicializando servicios...');
+    logger.info('Inicializando servicios...');
 
     await Promise.all([
       productService.initialize(),
@@ -16,9 +17,9 @@ export async function initializeServices(): Promise<void> {
       categoryService.initialize(),
     ]);
 
-    console.log('Todos los servicios inicializados correctamente');
+    logger.info('Todos los servicios inicializados correctamente');
   } catch (error) {
-    console.error('Error al inicializar los servicios');
+    logger.error({ err: error }, 'Error al inicializar los servicios');
     throw error;
   }
 }

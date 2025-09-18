@@ -2,6 +2,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 import type { Product } from '@app-types/index.js';
+import { logger as baseLogger } from '@app/lib/logger.js';
 import { loadFilesSync } from '@graphql-tools/load-files';
 import { mergeTypeDefs } from '@graphql-tools/merge';
 import { makeExecutableSchema } from '@graphql-tools/schema';
@@ -30,12 +31,18 @@ export async function createServer(): Promise<ApolloServer> {
   const server = new ApolloServer({
     schema,
     context: ({ req }): Context => {
+      const requestId =
+        (req?.headers?.['x-request-id'] as string) ||
+        `req_${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
+      const logger = baseLogger.child({ requestId });
       const productLoader = new DataLoader<string, Product>(async ids => {
         return ids.map(id => productService.getProductById(id));
       });
       return {
         authToken: (req?.headers?.authorization as string) || '',
         productLoader,
+        logger,
+        requestId,
       };
     },
     // Habilitar introspection para que funcione el playground
