@@ -9,4 +9,7 @@ npm run format || { echo "pre-commit: prettier falló"; exit 1; }
 # Linter (no corregimos automáticamente en CI/commit para detectar problemas)
 npm run lint || { echo "pre-commit: eslint falló"; exit 1; }
 
+# Ejecuta los tests
+npm run test || { echo "pre-commit: tests fallaron"; exit 1; }
+
 echo "pre-commit: OK"

@@ -7,7 +7,7 @@
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "husky",
     "prebuild": "npm run clean && npm run codegen",
     "build": "tsc",
     "postbuild": "tsc-alias -p tsconfig.json && npm run copy:schema && npm run copy:data",
@@ -18,7 +18,7 @@
     "dev": "NODE_ENV=development NODE_OPTIONS='--import tsx' tsx src/index.ts",
     "dev:watch": "NODE_ENV=development NODE_OPTIONS='--import tsx' tsx watch src/index.ts",
     "codegen": "graphql-codegen",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest run",
     "type-check": "tsc --noEmit",
     "lint": "eslint . --ext .ts,.tsx --cache --cache-location ./node_modules/.cache/eslint",
     "lint:fix": "npm run lint -- --fix",
@@ -58,6 +58,8 @@
     "tsc-alias": "1.8.8",
     "tsconfig-paths": "4.2.0",
     "tsx": "4.20.5",
-    "typescript": "5.9.2"
+    "typescript": "5.9.2",
+    "vitest": "1.6.0",
+    "vite-tsconfig-paths": "5.1.2"
   }
 }

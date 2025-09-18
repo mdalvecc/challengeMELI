@@ -15,6 +15,7 @@
     "declarationMap": true,
     "composite": true,
     "incremental": true,
+    "tsBuildInfoFile": "node_modules/.cache/tsc/tsconfig.tsbuildinfo",
     /* Strict Type-Checking Options */
     "strict": true,
     "noImplicitAny": true,
@@ -48,6 +49,9 @@
       ],
       "@app-types/*": [
         "src/types/*"
+      ],
+      "@app/*": [
+        "src/*"
       ]
     },
     /* Type Checking */
@@ -68,7 +72,8 @@
     "dist",
     "src/graphql/generated",
     "**/*.test.ts",
-    "**/*.spec.ts"
+    "**/*.spec.ts",
+    "tests"
   ],
   /* TS-Node Configuration */
   "ts-node": {

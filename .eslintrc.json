@@ -42,5 +42,24 @@
     "src/graphql/generated/**/*",
     "dist/**/*",
     "node_modules/**/*"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "tests/**/*.ts",
+        "vitest.config.ts"
+      ],
+      "parserOptions": {
+        "project": ["./tests/tsconfig.json"],
+        "tsconfigRootDir": "."
+      },
+      "env": {
+        "node": true,
+        "jest": true
+      },
+      "rules": {
+        "@typescript-eslint/explicit-function-return-type": "off"
+      }
+    }
   ]
 }

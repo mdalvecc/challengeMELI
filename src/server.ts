@@ -34,7 +34,7 @@ export async function createServer(): Promise<ApolloServer> {
         return ids.map(id => productService.getProductById(id));
       });
       return {
-        authToken: req.headers.authorization || '',
+        authToken: (req?.headers?.authorization as string) || '',
         productLoader,
       };
     },

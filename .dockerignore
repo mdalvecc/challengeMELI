@@ -17,3 +17,10 @@ Dockerfile*
 
 # Variables de entorno
 .env
+
+# Tests y herramientas de testeo
+tests/
+vitest.config.ts
+tsconfig.vitest.json
+.vitest/
+coverage/
