@@ -1,0 +1,19 @@
+# Artifacts del build y entorno
+**/dist
+**/node_modules
+*.tsbuildinfo
+
+# Configuración de desarrollo
+.vscode/
+
+# Archivos varios
+npm-debug.log
+Dockerfile*
+.dockerignore
+
+# Archivos de git
+.git
+.gitignore
+
+# Variables de entorno
+.env

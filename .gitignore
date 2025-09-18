@@ -1,4 +1,4 @@
-# Artifacts del build
+# Artifacts del build y entorno
 **/dist
 **/node_modules
 *.tsbuildinfo
